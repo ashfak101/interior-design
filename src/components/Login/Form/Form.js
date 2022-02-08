@@ -22,13 +22,18 @@ export default function Form({ open, handleClose }) {
       onClose={handleClose}
       aria-labelledby="child-modal-title"
       aria-describedby="child-modal-description"
+      sx={{ background: "rgba(0,0,0,0.8)" }}
     >
       <Box sx={{ ...style, width: 200 }}>
+        <Box sx={{ textAlign: "right" }}>
+          <Button sx onClick={handleClose}>
+            X
+          </Button>
+        </Box>
         <h2 id="child-modal-title">Text in a child modal</h2>
         <p id="child-modal-description">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit.
         </p>
-        <Button onClick={handleClose}>X</Button>
       </Box>
     </Modal>
   );

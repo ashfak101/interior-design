@@ -1,5 +1,13 @@
+import { Box } from "@mui/system";
 import React from "react";
-
+import bgImg from "../../../images/Banner/bg.png";
 export default function Banner() {
-  return <div></div>;
+  const bgImage = {
+    background: `url(${bgImg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    height: "100vh",
+  };
+  return <Box sx={bgImage}></Box>;
 }
