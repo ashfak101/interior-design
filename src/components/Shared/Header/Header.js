@@ -10,6 +10,7 @@ import Container from "@mui/material/Container";
 
 import img from "../../../images/Logo/Frame.png";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 export default function Header({ handleOpen, handleOpen2 }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -21,6 +22,7 @@ export default function Header({ handleOpen, handleOpen2 }) {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+  const { user, logOut } = useAuth();
   const headerStyle = {
     menuItem: {
       fontSize: "18px",
@@ -192,21 +194,29 @@ export default function Header({ handleOpen, handleOpen2 }) {
                 </Link>
               </Typography>
 
-              <Typography
-                onClick={handleOpen2}
-                sx={{
-                  ...headerStyle.menuItem,
-                  color: "#282828",
-                  cursor: "pointer",
-                }}
-              >
-                {" "}
-                Sign Up
-              </Typography>
-
-              <Typography onClick={handleOpen} sx={headerStyle.singIn}>
-                Sign In
-              </Typography>
+              {!user.email && (
+                <Typography
+                  onClick={handleOpen2}
+                  sx={{
+                    ...headerStyle.menuItem,
+                    color: "#282828",
+                    cursor: "pointer",
+                  }}
+                >
+                  {" "}
+                  Sign Up
+                </Typography>
+              )}
+              {!user.email && (
+                <Typography onClick={handleOpen} sx={headerStyle.singIn}>
+                  Sign In
+                </Typography>
+              )}
+              {user.email && (
+                <Typography onClick={logOut} sx={headerStyle.singIn}>
+                  Log Out
+                </Typography>
+              )}
             </Box>
           </Toolbar>
         </Container>

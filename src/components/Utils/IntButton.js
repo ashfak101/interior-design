@@ -8,9 +8,38 @@ const btnInt = {
   lineHeight: "19.2px",
   color: "#fff",
   background: "#282828",
-  padding: "21px 50px",
+  flexDirection: "column",
   borderRadius: "0",
+  position: "relative",
+  width: "180px",
+  height: "60px",
+  "&:hover": {
+    color: "#282828",
+  },
+
+  "&::after": {
+    content: "''",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    border: "1px solid #000000",
+    left: "16px",
+    top: "10px",
+    borderTop: "none",
+    borderLeft: "none",
+  },
+  "&::before": {
+    content: "''",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    border: "1px solid #000000",
+    right: "16px",
+    bottom: "10px",
+    borderRight: "none",
+    borderBottom: "none",
+  },
 };
-export default function IntButton() {
-  return <Button sx={btnInt}>Learn More</Button>;
+export default function IntButton({ text }) {
+  return <Button sx={btnInt}>{text}</Button>;
 }

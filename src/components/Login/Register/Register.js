@@ -4,7 +4,10 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import Form from "../Form/Form";
-export default function Register({ open2, handleClose2, handleOpen }) {
+import useAuth from "../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+export default function Register({ open2, handleClose2, handleOpen, isClick }) {
+  const nevigate = useNavigate();
   const style = {
     position: "absolute",
     top: "50%",
@@ -50,6 +53,38 @@ export default function Register({ open2, handleClose2, handleOpen }) {
       },
     },
   };
+  const {
+    registerWithEmailPass,
+    setUser,
+    loginWithGoogle,
+    loginWithFaceBook,
+    isLoading,
+  } = useAuth();
+  const handleGoolgeLogin = () => {
+    loginWithGoogle()
+      .then((results) => {
+        const user = results.user;
+        setUser(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    nevigate(`/home`);
+  };
+  const handleFaceboolLogin = () => {
+    loginWithFaceBook()
+      .then((results) => {
+        const user = results.user;
+        setUser(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  // console.log(user);
+  if (isLoading) {
+    return <div>Loading</div>;
+  }
   return (
     <Modal
       hideBackdrop
@@ -81,6 +116,7 @@ export default function Register({ open2, handleClose2, handleOpen }) {
           </Typography>
           <Box sx={{ textAlign: "center", marginTop: "20px" }}>
             <Button
+              onClick={handleGoolgeLogin}
               sx={{
                 ...styleBtn.btn1,
                 background: "#4688F1",
@@ -92,6 +128,7 @@ export default function Register({ open2, handleClose2, handleOpen }) {
               LOG IN WITH GOOGLE
             </Button>
             <Button
+              onClick={handleFaceboolLogin}
               sx={{
                 ...styleBtn.btn1,
                 background: "#3E5C97",
@@ -106,7 +143,12 @@ export default function Register({ open2, handleClose2, handleOpen }) {
             <Typography sx={{ ...styleBtn.text, textAlign: "center" }}>
               OR
             </Typography>
-            <Form text={"CREATE ACCOUNT"} />
+            <Form
+              text={"CREATE ACCOUNT"}
+              registerWithEmailPass={registerWithEmailPass}
+              isClick={isClick}
+              setUser={setUser}
+            />
           </Box>
           <Box sx={{ my: 3, textAlign: "center" }}>
             <Typography

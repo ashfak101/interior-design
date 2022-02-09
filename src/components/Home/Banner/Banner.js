@@ -12,11 +12,17 @@ export default function Banner() {
     backgroundRepeat: "no-repeat",
     height: "100vh",
   };
-
   return (
     <Box sx={bgImage}>
       <Box sx={{ paddingTop: "223px" }}>
-        <img src={Interior} alt="" />
+        <img
+          style={{
+            width: "50%",
+          }}
+          src={Interior}
+          alt=""
+        />
+
         <Box
           sx={{
             position: "absolute",
@@ -29,8 +35,13 @@ export default function Banner() {
             sx={{
               fontFamily: "Roboto",
               fontWeight: "700",
-              fontSize: "51.6334px",
-              lineHeight: "64px",
+              fontSize: {
+                xs: "24px",
+                sm: "36px",
+                md: "36.6334px",
+                lg: "51.6334px",
+              },
+              lineHeight: "70px",
               color: "#282828",
             }}
           >
@@ -40,15 +51,25 @@ export default function Banner() {
             sx={{
               fontFamily: "Roboto",
               fontWeight: "900",
-              fontSize: "175.34px",
-              lineHeight: "150px",
+              fontSize: {
+                xs: "100px",
+                sm: "50px",
+                md: "100.34px",
+                lg: "175.34px",
+              },
+              lineHeight: {
+                lg: "180px",
+                md: "50px",
+                sm: "0px",
+                xs: "50px",
+              },
               color: "#282828",
               marginBottom: "60px",
             }}
           >
             Interior
           </Typography>
-          <IntButton></IntButton>
+          <IntButton text={"Learn More"}></IntButton>
         </Box>
       </Box>
     </Box>

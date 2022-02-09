@@ -4,6 +4,8 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import Form from "../Form/Form";
+import useAuth from "../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 export default function Login({ open, handleClose, handleOpen2 }) {
   const style = {
     position: "absolute",
@@ -50,6 +52,40 @@ export default function Login({ open, handleClose, handleOpen2 }) {
       },
     },
   };
+  const {
+    user,
+    loginWithGoogle,
+    setUser,
+    loginWithFaceBook,
+    loginWithEmail,
+    isLoading,
+  } = useAuth();
+  const nevigation = useNavigate();
+  const handleGoolgeLogin = () => {
+    loginWithGoogle()
+      .then((results) => {
+        const user = results.user;
+        setUser(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    nevigation("/home");
+  };
+  const handleFaceboolLogin = () => {
+    loginWithFaceBook()
+      .then((results) => {
+        const user = results.user;
+        setUser(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  // console.log(user);
+  if (isLoading) {
+    return <div>Loading</div>;
+  }
   return (
     <Modal
       hideBackdrop
@@ -80,6 +116,7 @@ export default function Login({ open, handleClose, handleOpen2 }) {
           </Typography>
           <Box sx={{ textAlign: "center", marginTop: "20px" }}>
             <Button
+              onClick={handleGoolgeLogin}
               sx={{
                 ...styleBtn.btn1,
                 background: "#4688F1",
@@ -91,6 +128,7 @@ export default function Login({ open, handleClose, handleOpen2 }) {
               LOG IN WITH GOOGLE
             </Button>
             <Button
+              onClick={handleFaceboolLogin}
               sx={{
                 ...styleBtn.btn1,
                 background: "#3E5C97",
@@ -105,7 +143,11 @@ export default function Login({ open, handleClose, handleOpen2 }) {
             <Typography sx={{ ...styleBtn.text, textAlign: "center" }}>
               OR
             </Typography>
-            <Form text={"LOG IN"} />
+            <Form
+              text={"LOG IN"}
+              loginWithEmail={loginWithEmail}
+              setUser={setUser}
+            />
           </Box>
           <Box sx={{ my: 3, textAlign: "center" }}>
             <Typography
