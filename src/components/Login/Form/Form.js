@@ -1,40 +1,51 @@
+import { Button, InputLabel, TextField } from "@mui/material";
 import React from "react";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Button from "@mui/material/Button";
+// import Box from "@mui/material/Box";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-export default function Form({ open, handleClose }) {
+// import Button from "@mui/material/Button";
+// import { InputLabel, TextField, Typography } from "@mui/material";
+
+export default function Form({ text }) {
+  const style = {
+    textFieldStyle: {
+      fontSize: "12px",
+      color: "#494949",
+      lineHeight: "8.58px",
+    },
+  };
   return (
-    <Modal
-      hideBackdrop
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="child-modal-title"
-      aria-describedby="child-modal-description"
-      sx={{ background: "rgba(0,0,0,0.8)" }}
-    >
-      <Box sx={{ ...style, width: 200 }}>
-        <Box sx={{ textAlign: "right" }}>
-          <Button sx onClick={handleClose}>
-            X
-          </Button>
-        </Box>
-        <h2 id="child-modal-title">Text in a child modal</h2>
-        <p id="child-modal-description">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-        </p>
-      </Box>
-    </Modal>
+    <form>
+      <InputLabel sx={{ fontFamily: "lato", fontSize: "12px" }}>
+        Email
+      </InputLabel>
+      <TextField
+        type="email"
+        id="outlined-name"
+        sx={{ width: "100%", ...style.textFieldStyle }}
+      ></TextField>
+      <InputLabel sx={{ fontFamily: "lato", fontSize: "12px" }}>
+        Password
+      </InputLabel>
+      <TextField
+        id="outlined-name"
+        sx={{ width: "100%", ...style.textFieldStyle }}
+        type="Password"
+      ></TextField>
+      <Button
+        variant="contained"
+        sx={{
+          background: "#C63437",
+          color: "#fff",
+          borderRadius: "2px",
+          fontSize: "12px",
+          display: "block",
+          width: "100%",
+          marginTop: "20px",
+          padding: "8px 0",
+        }}
+      >
+        {text}
+      </Button>
+    </form>
   );
 }

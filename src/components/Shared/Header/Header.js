@@ -11,7 +11,7 @@ import Container from "@mui/material/Container";
 import img from "../../../images/Logo/Frame.png";
 import { Link } from "react-router-dom";
 
-export default function Header({ handleOpen }) {
+export default function Header({ handleOpen, handleOpen2 }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -160,7 +160,7 @@ export default function Header({ handleOpen }) {
                     textDecoration: "none",
                     color: "#282828",
                   }}
-                  to="/"
+                  to="/inner"
                 >
                   Pricing
                 </Link>
@@ -192,17 +192,16 @@ export default function Header({ handleOpen }) {
                 </Link>
               </Typography>
 
-              <Typography sx={headerStyle.menuItem}>
+              <Typography
+                onClick={handleOpen2}
+                sx={{
+                  ...headerStyle.menuItem,
+                  color: "#282828",
+                  cursor: "pointer",
+                }}
+              >
                 {" "}
-                <Link
-                  style={{
-                    textDecoration: "none",
-                    color: "#282828",
-                  }}
-                  to="/"
-                >
-                  Sign Up
-                </Link>
+                Sign Up
               </Typography>
 
               <Typography onClick={handleOpen} sx={headerStyle.singIn}>

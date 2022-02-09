@@ -1,21 +1,37 @@
-import React from "react";
-import Form from "../../Login/Form/Form";
+import React, { useState } from "react";
+
+import Login from "../../Login/Login/Login";
+import Register from "../../Login/Register/Register";
 import Header from "../../Shared/Header/Header";
 import Banner from "../Banner/Banner";
 
 export default function Home() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
+
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleOpen2 = () => {
+    setOpen2(true);
+  };
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
   return (
     <div>
-      <Header handleOpen={handleOpen} />
+      <Header handleOpen={handleOpen} handleOpen2={handleOpen2} />
       <Banner />
-      <Form open={open} handleClose={handleClose}></Form>
+      <Login open={open} handleClose={handleClose} handleOpen2={handleOpen2} />
+      <Register
+        open2={open2}
+        handleClose2={handleClose2}
+        handleOpen={handleOpen}
+      />
     </div>
   );
 }
