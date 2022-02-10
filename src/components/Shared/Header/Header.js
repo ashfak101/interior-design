@@ -194,7 +194,7 @@ export default function Header({ handleOpen, handleOpen2 }) {
                 </Link>
               </Typography>
 
-              {!user.email && (
+              {!user?.email && (
                 <Typography
                   onClick={handleOpen2}
                   sx={{
@@ -207,12 +207,12 @@ export default function Header({ handleOpen, handleOpen2 }) {
                   Sign Up
                 </Typography>
               )}
-              {!user.email && (
+              {!user?.email && (
                 <Typography onClick={handleOpen} sx={headerStyle.singIn}>
                   Sign In
                 </Typography>
               )}
-              {user.email && (
+              {user?.email && (
                 <Typography onClick={logOut} sx={headerStyle.singIn}>
                   Log Out
                 </Typography>

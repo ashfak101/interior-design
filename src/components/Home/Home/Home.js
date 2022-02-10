@@ -2,8 +2,10 @@ import React, { useState } from "react";
 
 import Login from "../../Login/Login/Login";
 import Register from "../../Login/Register/Register";
+import Services from "../../Services/Services";
 import Header from "../../Shared/Header/Header";
 import Banner from "../Banner/Banner";
+import Hero from "../Hero/Hero";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -35,6 +37,8 @@ export default function Home() {
         handleOpen={handleOpen}
         isClick={isClick}
       />
+      <Hero />
+      <Services />
     </div>
   );
 }

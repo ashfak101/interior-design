@@ -6,6 +6,7 @@ import { Typography } from "@mui/material";
 import Form from "../Form/Form";
 import useAuth from "../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import LinearProgress from "@mui/material/LinearProgress";
 export default function Login({ open, handleClose, handleOpen2 }) {
   const style = {
     position: "absolute",
@@ -84,7 +85,11 @@ export default function Login({ open, handleClose, handleOpen2 }) {
   };
   // console.log(user);
   if (isLoading) {
-    return <div>Loading</div>;
+    return (
+      <Box sx={{ width: "100%" }}>
+        <LinearProgress />
+      </Box>
+    );
   }
   return (
     <Modal
