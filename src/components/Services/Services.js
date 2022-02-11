@@ -28,6 +28,8 @@ function Services() {
       >
         {services.map((service) => (
           <Grid
+            xs={12}
+            md={4}
             lg={4}
             sx={{
               position: "relative",

@@ -14,7 +14,7 @@ export default function Banner() {
   };
   return (
     <Box sx={bgImage}>
-      <Box sx={{ paddingTop: "223px" }}>
+      <Box sx={{ paddingTop: "223px", textAlign: "center" }}>
         <img
           style={{
             width: "50%",

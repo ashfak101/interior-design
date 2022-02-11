@@ -6,7 +6,7 @@ import AuthProvider from "./context/AuthProvider";
 function App() {
   return (
     <AuthProvider>
-      <div className="App">
+      <div>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />

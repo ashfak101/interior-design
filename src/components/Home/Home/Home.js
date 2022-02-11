@@ -5,7 +5,9 @@ import Register from "../../Login/Register/Register";
 import Services from "../../Services/Services";
 import Header from "../../Shared/Header/Header";
 import Banner from "../Banner/Banner";
+import Courses from "../Courses/Courses";
 import Hero from "../Hero/Hero";
+import VideoSection from "../VideoSection/VideoSection";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -39,6 +41,8 @@ export default function Home() {
       />
       <Hero />
       <Services />
+      <Courses />
+      <VideoSection />
     </div>
   );
 }
