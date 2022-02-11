@@ -150,10 +150,9 @@ function VideoSection() {
                       height="415"
                       src={video.url}
                       title="YouTube video player"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen
-                      controls="0"
+                      frameBorder="0"
+                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullscreen
                     ></iframe>
                   </Box>
                 </Modal>

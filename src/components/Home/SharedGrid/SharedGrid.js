@@ -4,6 +4,8 @@ import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import PersonIcon from "@mui/icons-material/Person";
 import StarRateIcon from "@mui/icons-material/StarRate";
+import ShareIcon from "@mui/icons-material/Share";
+import DateRangeIcon from "@mui/icons-material/DateRange";
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -40,32 +42,78 @@ function SharedGrid({ data }) {
             fontWeight: "700",
             color: "#3F3F3F",
             margin: "30px 0",
+            textAlign: "left",
           }}
         >
           {data.name}
         </Typography>
-        <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+        {data.blogId && (
           <Typography
-            display={{
-              display: "flex",
+            sx={{
+              fonFamily: "Roboto",
               fontSize: "16px",
+              fontWeight: "400",
               color: "#3F3F3F",
-              fontWeight: "500",
+
+              textAlign: "left",
             }}
           >
-            <PersonIcon />
-            {data.people} User
+            {data.description.slice(0, 100)}
           </Typography>
-          <Typography
-            display={{
-              display: "flex",
-              fontSize: "16px",
-              color: "#3F3F3F",
-              fontWeight: "500",
-            }}
-          >
-            <StarRateIcon sx={{ color: "#E8B237" }} /> {data.rating} Rating
-          </Typography>
+        )}
+        <Box
+          sx={{ display: "flex", justifyContent: "space-between", p: "10px 0" }}
+        >
+          {data.people && (
+            <Typography
+              display={{
+                display: "flex",
+                fontSize: "16px",
+                color: "#3F3F3F",
+                fontWeight: "500",
+              }}
+            >
+              <PersonIcon />
+              {data.people} User
+            </Typography>
+          )}
+          {data.rating && (
+            <Typography
+              display={{
+                display: "flex",
+                fontSize: "16px",
+                color: "#3F3F3F",
+                fontWeight: "500",
+              }}
+            >
+              <StarRateIcon sx={{ color: "#E8B237" }} /> {data.rating} Rating
+            </Typography>
+          )}
+          {data.blogId && (
+            <Typography
+              display={{
+                display: "flex",
+                fontSize: "14px",
+                color: "#3F3F3F",
+                fontWeight: "500",
+              }}
+            >
+              <DateRangeIcon />
+              28 July 2020
+            </Typography>
+          )}
+          {data.blogId && (
+            <Typography
+              display={{
+                display: "flex",
+                fontSize: "14px",
+                color: "#3F3F3F",
+                fontWeight: "500",
+              }}
+            >
+              <ShareIcon /> share now
+            </Typography>
+          )}
         </Box>
       </Item>
     </Grid>

@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import Login from "../../Login/Login/Login";
 import Register from "../../Login/Register/Register";
 import Services from "../../Services/Services";
+import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
 import Banner from "../Banner/Banner";
 import Courses from "../Courses/Courses";
 import Hero from "../Hero/Hero";
+import HomeBlogs from "../HomeBlogs/HomeBlogs";
+import Reviews from "../Reviews/Reviews";
 import VideoSection from "../VideoSection/VideoSection";
 
 export default function Home() {
@@ -43,6 +46,9 @@ export default function Home() {
       <Services />
       <Courses />
       <VideoSection />
+      <Reviews />
+      <HomeBlogs />
+      <Footer />
     </div>
   );
 }
