@@ -6,6 +6,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import ShareIcon from "@mui/icons-material/Share";
 import DateRangeIcon from "@mui/icons-material/DateRange";
+import { Link } from "react-router-dom";
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -47,6 +48,20 @@ function SharedGrid({ data }) {
         >
           {data.name}
         </Typography>
+        <Link to={`/courseHome/${data.id}`}>
+          {" "}
+          <Typography
+            sx={{
+              fontSize: "24px",
+              fontWeight: "700",
+              color: "#3F3F3F",
+              margin: "30px 0",
+              textAlign: "left",
+            }}
+          >
+            {data.courseName}
+          </Typography>
+        </Link>
         {data.blogId && (
           <Typography
             sx={{

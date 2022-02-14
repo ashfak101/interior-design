@@ -1,5 +1,5 @@
 import { Box, Container, Grid } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { DataContext } from "../../../context/DataProvider";
 import bgImg from "../../../images/courses.png";
 import IntButton from "../../Utils/IntButton";
@@ -18,7 +18,7 @@ function Courses() {
     fetch("course.json")
       .then((res) => res.json())
       .then((data) => setCourses(data));
-  }, []);
+  }, [setCourses]);
   return (
     <Box sx={bgImage}>
       <Box

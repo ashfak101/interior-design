@@ -33,7 +33,11 @@ export default function Home() {
 
   return (
     <div>
-      <Header handleOpen={handleOpen} handleOpen2={handleOpen2} />
+      <Header
+        handleOpen={handleOpen}
+        handleOpen2={handleOpen2}
+        color={"#282828"}
+      />
       <Banner />
       <Login open={open} handleClose={handleClose} handleOpen2={handleOpen2} />
       <Register

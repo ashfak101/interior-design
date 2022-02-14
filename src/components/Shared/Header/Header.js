@@ -12,7 +12,7 @@ import img from "../../../images/Logo/Frame.png";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
-export default function Header({ handleOpen, handleOpen2 }) {
+export default function Header({ handleOpen, handleOpen2, color }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -32,7 +32,7 @@ export default function Header({ handleOpen, handleOpen2 }) {
       marginRight: "49px",
     },
     singIn: {
-      color: "#282828",
+      color: color,
       fontSize: "18px",
       fontWeight: "normal",
       fontFamily: "Roboto",
@@ -148,7 +148,7 @@ export default function Header({ handleOpen, handleOpen2 }) {
                 <Link
                   style={{
                     textDecoration: "none",
-                    color: "#282828",
+                    color: color,
                   }}
                   to="/"
                 >
@@ -160,7 +160,7 @@ export default function Header({ handleOpen, handleOpen2 }) {
                 <Link
                   style={{
                     textDecoration: "none",
-                    color: "#282828",
+                    color: color,
                   }}
                   to="/inner"
                 >
@@ -173,7 +173,7 @@ export default function Header({ handleOpen, handleOpen2 }) {
                 <Link
                   style={{
                     textDecoration: "none",
-                    color: "#282828",
+                    color: color,
                   }}
                   to="/"
                 >
@@ -186,7 +186,7 @@ export default function Header({ handleOpen, handleOpen2 }) {
                 <Link
                   style={{
                     textDecoration: "none",
-                    color: "#282828",
+                    color: color,
                   }}
                   to="/"
                 >
@@ -199,7 +199,7 @@ export default function Header({ handleOpen, handleOpen2 }) {
                   onClick={handleOpen2}
                   sx={{
                     ...headerStyle.menuItem,
-                    color: "#282828",
+                    color: color,
                     cursor: "pointer",
                   }}
                 >

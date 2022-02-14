@@ -1,0 +1,122 @@
+import { Box, Container, Grid, Typography } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { DataContext } from "../../context/DataProvider";
+import img from "../../images/singleCourse.png";
+import LocalAtmIcon from "@mui/icons-material/LocalAtm";
+import StarIcon from "@mui/icons-material/Star";
+import AllInboxIcon from "@mui/icons-material/AllInbox";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import PersonIcon from "@mui/icons-material/Person";
+import SubtitlesIcon from "@mui/icons-material/Subtitles";
+import ShareIcon from "@mui/icons-material/Share";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+const styles = {
+  cardItems: {
+    display: "flex",
+    justifyContent: "space-between",
+    pb: 2,
+    pt: 2,
+    borderBottom: " 0.877651px solid rgba(0, 0, 0, 0.09)",
+  },
+};
+function CourseDetails() {
+  const { id } = useParams();
+  console.log(id);
+  const [courses] = useContext(DataContext);
+  const [singleCourse, setSingleCourse] = useState({});
+  console.log(singleCourse);
+  useEffect(() => {
+    const course = courses.find((course) => course.id === id);
+    setSingleCourse(course);
+  }, [courses, id]);
+  return (
+    <Box sx={{ marginTop: "-600px", background: "transparent" }}>
+      <Container
+        maxWidth="xl"
+        sx={{
+          border: "1px solid rgba(0, 0, 0, 0.1)",
+          background: "#FFFFFF",
+          pt: 2,
+        }}
+      >
+        <Grid container spacing={2}>
+          <Grid xs={12} md={8} xl={8}>
+            <img style={{ width: "100%" }} src={img} alt="" />
+          </Grid>
+          <Grid xs={12} md={4} xl={4} sx={{ p: 5 }}>
+            <Typography
+              sx={{ fontWeight: "700", fontSize: "21.06px", mb: "36px" }}
+            >
+              Course Details
+            </Typography>
+            <Box sx={{ ...styles.cardItems }}>
+              <Typography sx={{ display: "flex" }}>
+                {" "}
+                <LocalAtmIcon />
+                Price
+              </Typography>
+              <Typography>{singleCourse.price}</Typography>
+            </Box>
+            <Box sx={{ ...styles.cardItems }}>
+              <Typography sx={{ display: "flex" }}>
+                {" "}
+                <AllInboxIcon />
+                Level
+              </Typography>
+              <Typography>{singleCourse.Level}</Typography>
+            </Box>
+            <Box sx={{ ...styles.cardItems }}>
+              <Typography sx={{ display: "flex" }}>
+                {" "}
+                <StarIcon />
+                Rating
+              </Typography>
+              <Typography>{singleCourse.rating}</Typography>
+            </Box>
+            <Box sx={{ ...styles.cardItems }}>
+              <Typography sx={{ display: "flex" }}>
+                {" "}
+                <PlayCircleIcon />
+                Duration
+              </Typography>
+              <Typography>{singleCourse.duration}</Typography>
+            </Box>
+            <Box sx={{ ...styles.cardItems }}>
+              <Typography sx={{ display: "flex" }}>
+                {" "}
+                <PersonIcon />
+                Students
+              </Typography>
+              <Typography>{singleCourse.price}</Typography>
+            </Box>
+            <Box sx={{ ...styles.cardItems }}>
+              <Typography sx={{ display: "flex" }}>
+                {" "}
+                <SubtitlesIcon />
+                Languages
+              </Typography>
+              <Typography>English</Typography>
+            </Box>
+            <Box sx={{ ...styles.cardItems }}>
+              <Typography sx={{ display: "flex" }}>
+                {" "}
+                <ShareIcon />
+                Share
+              </Typography>
+              <Typography>
+                <FacebookIcon />
+                <TwitterIcon />
+                <LinkedInIcon />
+              </Typography>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+  );
+}
+
+export default CourseDetails;

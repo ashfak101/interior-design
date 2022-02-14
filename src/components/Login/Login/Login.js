@@ -83,6 +83,7 @@ export default function Login({ open, handleClose, handleOpen2 }) {
       .catch((error) => {
         console.log(error);
       });
+    handleClose();
   };
   // console.log(user);
   if (isLoading) {
