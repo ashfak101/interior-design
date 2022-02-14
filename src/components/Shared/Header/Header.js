@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import img from "../../../images/Logo/Frame.png";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
@@ -66,64 +66,6 @@ export default function Header({ handleOpen, handleOpen2, color }) {
               <img src={img} alt="" />
             </Typography>
 
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: "block", md: "none" },
-                }}
-              >
-                <Typography>
-                  <Link to="/">Home</Link>
-                </Typography>
-                <Typography>
-                  {" "}
-                  <Link to="/">Pricing</Link>
-                </Typography>
-
-                <Typography>
-                  {" "}
-                  <Link to="/">Testimonials</Link>
-                </Typography>
-
-                <Typography>
-                  {" "}
-                  <Link to="/">Free Quiz</Link>
-                </Typography>
-
-                <Typography>
-                  {" "}
-                  <Link to="/">Sign Up</Link>
-                </Typography>
-
-                <Typography>
-                  {" "}
-                  <Link to="/">Sign In</Link>
-                </Typography>
-              </Menu>
-            </Box>
             <Typography
               variant="h6"
               noWrap
@@ -175,9 +117,9 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                     textDecoration: "none",
                     color: color,
                   }}
-                  to="/"
+                  to="/cart"
                 >
-                  Testimonials
+                  <AddShoppingCartIcon />
                 </Link>
               </Typography>
 
@@ -217,6 +159,111 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                   Log Out
                 </Typography>
               )}
+            </Box>
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                {/* for Large Screen Menu */}
+                <Typography sx={headerStyle.menuItem}>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                      color: color,
+                    }}
+                    to="/"
+                  >
+                    Home
+                  </Link>
+                </Typography>
+                <Typography sx={headerStyle.menuItem}>
+                  {" "}
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                      color: color,
+                    }}
+                    to="/inner"
+                  >
+                    Pricing
+                  </Link>
+                </Typography>
+
+                <Typography sx={headerStyle.menuItem}>
+                  {" "}
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                      color: color,
+                    }}
+                    to="/cart"
+                  >
+                    <AddShoppingCartIcon />
+                  </Link>
+                </Typography>
+
+                <Typography sx={headerStyle.menuItem}>
+                  {" "}
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                      color: color,
+                    }}
+                    to="/"
+                  >
+                    Free Quiz
+                  </Link>
+                </Typography>
+
+                {!user?.email && (
+                  <Typography
+                    onClick={handleOpen2}
+                    sx={{
+                      ...headerStyle.menuItem,
+                      color: color,
+                      cursor: "pointer",
+                    }}
+                  >
+                    {" "}
+                    Sign Up
+                  </Typography>
+                )}
+                {!user?.email && (
+                  <Typography onClick={handleOpen} sx={headerStyle.singIn}>
+                    Sign In
+                  </Typography>
+                )}
+                {user?.email && (
+                  <Typography onClick={logOut} sx={headerStyle.singIn}>
+                    Log Out
+                  </Typography>
+                )}
+              </Menu>
             </Box>
           </Toolbar>
         </Container>

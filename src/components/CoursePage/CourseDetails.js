@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Alert, Box, Button, Container, Grid, Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { DataContext } from "../../context/DataProvider";
@@ -13,6 +13,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import Snackbar from "@mui/material/Snackbar";
 const styles = {
   cardItems: {
     display: "flex",
@@ -22,7 +23,7 @@ const styles = {
     borderBottom: " 0.877651px solid rgba(0, 0, 0, 0.09)",
   },
 };
-function CourseDetails() {
+function CourseDetails({ handleAddToCart, isTrue }) {
   const { id } = useParams();
   console.log(id);
   const [courses] = useContext(DataContext);
@@ -112,6 +113,20 @@ function CourseDetails() {
                 <LinkedInIcon />
               </Typography>
             </Box>
+            <Button
+              sx={{
+                width: "100%",
+                mt: "20px",
+                backgroundColor: "#282828",
+                color: "#FFFFFF",
+                "&:hover": { color: "#282828" },
+              }}
+              onClick={() => handleAddToCart(singleCourse)}
+            >
+              Enroll Now
+            </Button>
+
+            {isTrue && <Alert>Item added to Cart</Alert>}
           </Grid>
         </Grid>
       </Container>
