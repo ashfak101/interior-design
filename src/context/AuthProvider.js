@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import useFirebase from "../components/Firebase/useFirebase";
 
 export const AuthContext = React.createContext();
-export const DataContext = React.createContext();
+
 export default function AuthProvider({ children }) {
   const allChildren = useFirebase();
   return (

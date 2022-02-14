@@ -61,23 +61,24 @@ export default function Login({ open, handleClose, handleOpen2 }) {
     loginWithEmail,
     isLoading,
   } = useAuth();
-  const nevigation = useNavigate();
+  const navigate = useNavigate();
   const handleGoolgeLogin = () => {
     loginWithGoogle()
       .then((results) => {
         const user = results.user;
         setUser(user);
+        navigate.push(`/home`);
       })
       .catch((error) => {
         console.log(error);
       });
-    nevigation("/home");
   };
   const handleFaceboolLogin = () => {
     loginWithFaceBook()
       .then((results) => {
         const user = results.user;
         setUser(user);
+        navigate.push(`/home`);
       })
       .catch((error) => {
         console.log(error);

@@ -9,8 +9,8 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 560,
-  bgcolor: "background.paper",
-  background: "rgba(0, 0, 0, 0.1)",
+  // bgcolor: "background.paper",
+  // background: "rgba(0, 0, 0, 0.1)",
   border: "none",
 };
 const styles = {
@@ -105,7 +105,6 @@ function VideoSection() {
                 }}
               >
                 <Box
-                  onClick={handleOpen}
                   sx={{
                     position: "relative",
 
@@ -124,6 +123,9 @@ function VideoSection() {
                   }}
                 >
                   <PlayArrowIcon
+                    onClick={() => {
+                      handleOpen(video.url);
+                    }}
                     sx={{
                       fontSize: "30px",
                       color: "#FFFFFF",
