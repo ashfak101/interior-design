@@ -1,6 +1,6 @@
 import { Box, Container, Grid } from "@mui/material";
-import React, { useContext, useEffect } from "react";
-import { DataContext } from "../../../context/DataProvider";
+import React, { useEffect, useState } from "react";
+
 import bgImg from "../../../images/courses.png";
 import IntButton from "../../Utils/IntButton";
 import Title from "../../Utils/Title";
@@ -12,7 +12,7 @@ const bgImage = {
   backgroundRepeat: "no-repeat",
 };
 function Courses() {
-  const [courses, setCourses] = useContext(DataContext);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     fetch("course.json")

@@ -1,5 +1,4 @@
 import {
-  Box,
   Paper,
   Table,
   TableBody,
@@ -7,16 +6,13 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TextField,
 } from "@mui/material";
 import { DataContext } from "../../context/DataProvider";
 import React, { useContext } from "react";
 import CartItem from "./CartItem";
 
-function ShoppingCart({ cart, setCart }) {
-  const [courses] = useContext(DataContext);
-  console.log(cart);
-  console.log(courses);
+function ShoppingCart({ finalTotal, setFinalTotal }) {
+  const [cart] = useContext(DataContext);
   return (
     <>
       <Paper sx={{ width: "100%" }}>
@@ -33,7 +29,12 @@ function ShoppingCart({ cart, setCart }) {
             </TableHead>
             <TableBody>
               {cart?.map((cd) => (
-                <CartItem key={cd.id} cd={cd}></CartItem>
+                <CartItem
+                  key={cd.id}
+                  finalTotal={finalTotal}
+                  setFinalTotal={setFinalTotal}
+                  cd={cd}
+                ></CartItem>
               ))}
             </TableBody>
           </Table>

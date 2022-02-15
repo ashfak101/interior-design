@@ -1,25 +1,47 @@
-import { Box, TableCell, TableRow, TextField } from "@mui/material";
-import React from "react";
+import { Box, TableCell, TableRow, TextField, Typography } from "@mui/material";
+import React, { useContext, useState } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveIcon from "@mui/icons-material/Remove";
-function CartItem({ cd }) {
+import { DataContext } from "../../context/DataProvider";
+function CartItem({ cd, setFinalTotal }) {
+  const [cart] = useContext(DataContext);
+  const [quantity, setQuantity] = useState(cd.quantity);
   let total = cd.quantity * cd.price;
+
+  const increaseQuantity = () => {
+    setQuantity((cd.quantity += 1));
+  };
+  let totalQuantity = 0;
+  let allTotal = 0;
+  for (const i of cart) {
+    if (!i.quantity) {
+      i.quantity = 1;
+    } else {
+      allTotal = allTotal + i.price * i.quantity;
+      totalQuantity = totalQuantity + i.quantity;
+    }
+  }
+  setFinalTotal(allTotal);
+  console.log(quantity);
   return (
     <TableRow hover role="checkbox" tabIndex={-1}>
       {" "}
       <TableCell sx={{ display: "flex" }}>
         <img style={{ height: "50px", minWidth: "9px" }} src={cd.img} alt="" />
-        {cd.courseName}
+        <Typography> {cd.courseName}</Typography>
       </TableCell>{" "}
       <TableCell>{cd.price}</TableCell>{" "}
       <TableCell>
-        <Box>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
           <RemoveIcon />
+
           <TextField
-            sx={{ width: "50px", height: "0.4375em" }}
-            value={cd.quantity}
+            id="outlined-basic"
+            value={quantity}
+            variant="outlined"
+            sx={{ width: "50px", height: "50px", border: "none" }}
           />
-          <AddCircleOutlineIcon />
+          <AddCircleOutlineIcon onClick={increaseQuantity} />
         </Box>
       </TableCell>{" "}
       <TableCell>{total}$</TableCell>{" "}

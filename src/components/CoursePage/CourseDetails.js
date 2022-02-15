@@ -13,7 +13,9 @@ import ShareIcon from "@mui/icons-material/Share";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import Snackbar from "@mui/material/Snackbar";
+
+import CourseOverView from "./CourseOverView";
+import CourseCuri from "./CourseCuri";
 const styles = {
   cardItems: {
     display: "flex",
@@ -26,13 +28,18 @@ const styles = {
 function CourseDetails({ handleAddToCart, isTrue }) {
   const { id } = useParams();
   console.log(id);
-  const [courses] = useContext(DataContext);
+  const [courseList, setCoursesList] = useState([]);
   const [singleCourse, setSingleCourse] = useState({});
   console.log(singleCourse);
   useEffect(() => {
-    const course = courses.find((course) => course.id === id);
+    const course = courseList.find((course) => course.id === id);
     setSingleCourse(course);
-  }, [courses, id]);
+  }, [courseList, id]);
+  useEffect(() => {
+    fetch("/course.json")
+      .then((res) => res.json())
+      .then((data) => setCoursesList(data));
+  }, []);
   return (
     <Box sx={{ marginTop: "-600px", background: "transparent" }}>
       <Container
@@ -43,7 +50,7 @@ function CourseDetails({ handleAddToCart, isTrue }) {
           pt: 2,
         }}
       >
-        <Grid container spacing={2}>
+        <Grid container spacing={1}>
           <Grid xs={12} md={8} xl={8}>
             <img style={{ width: "100%" }} src={img} alt="" />
           </Grid>
@@ -59,7 +66,7 @@ function CourseDetails({ handleAddToCart, isTrue }) {
                 <LocalAtmIcon />
                 Price
               </Typography>
-              <Typography>{singleCourse.price}</Typography>
+              <Typography>{singleCourse?.price}</Typography>
             </Box>
             <Box sx={{ ...styles.cardItems }}>
               <Typography sx={{ display: "flex" }}>
@@ -67,7 +74,7 @@ function CourseDetails({ handleAddToCart, isTrue }) {
                 <AllInboxIcon />
                 Level
               </Typography>
-              <Typography>{singleCourse.Level}</Typography>
+              <Typography>{singleCourse?.Level}</Typography>
             </Box>
             <Box sx={{ ...styles.cardItems }}>
               <Typography sx={{ display: "flex" }}>
@@ -75,7 +82,7 @@ function CourseDetails({ handleAddToCart, isTrue }) {
                 <StarIcon />
                 Rating
               </Typography>
-              <Typography>{singleCourse.rating}</Typography>
+              <Typography>{singleCourse?.rating}</Typography>
             </Box>
             <Box sx={{ ...styles.cardItems }}>
               <Typography sx={{ display: "flex" }}>
@@ -83,7 +90,7 @@ function CourseDetails({ handleAddToCart, isTrue }) {
                 <PlayCircleIcon />
                 Duration
               </Typography>
-              <Typography>{singleCourse.duration}</Typography>
+              <Typography>{singleCourse?.duration}</Typography>
             </Box>
             <Box sx={{ ...styles.cardItems }}>
               <Typography sx={{ display: "flex" }}>
@@ -91,7 +98,7 @@ function CourseDetails({ handleAddToCart, isTrue }) {
                 <PersonIcon />
                 Students
               </Typography>
-              <Typography>{singleCourse.price}</Typography>
+              <Typography>{singleCourse?.price}</Typography>
             </Box>
             <Box sx={{ ...styles.cardItems }}>
               <Typography sx={{ display: "flex" }}>
@@ -130,6 +137,8 @@ function CourseDetails({ handleAddToCart, isTrue }) {
           </Grid>
         </Grid>
       </Container>
+      <CourseOverView des={singleCourse?.description} />
+      <CourseCuri singleCourse={singleCourse} />
     </Box>
   );
 }

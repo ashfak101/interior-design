@@ -119,7 +119,7 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                   }}
                   to="/cart"
                 >
-                  <AddShoppingCartIcon />
+                  Cart
                 </Link>
               </Typography>
 
@@ -130,7 +130,7 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                     textDecoration: "none",
                     color: color,
                   }}
-                  to="/"
+                  to="/quiz"
                 >
                   Free Quiz
                 </Link>
@@ -210,7 +210,7 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                     }}
                     to="/inner"
                   >
-                    Pricing
+                    Quizzes
                   </Link>
                 </Typography>
 
@@ -223,7 +223,7 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                     }}
                     to="/cart"
                   >
-                    <AddShoppingCartIcon />
+                    Cart
                   </Link>
                 </Typography>
 
@@ -234,7 +234,7 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                       textDecoration: "none",
                       color: color,
                     }}
-                    to="/"
+                    to="/quiz"
                   >
                     Free Quiz
                   </Link>

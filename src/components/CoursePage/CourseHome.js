@@ -1,13 +1,16 @@
 import { Box } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { DataContext } from "../../context/DataProvider";
+import Footer from "../Shared/Footer/Footer";
 import Header from "../Shared/Header/Header";
 
 import CourseDetails from "./CourseDetails";
 import CourseHero from "./CourseHero";
-import CourseOverView from "./CourseOverView";
-function CourseHome({ cart, setCart }) {
+import CourseReview from "./CourseReview";
+
+function CourseHome() {
   const [isTrue, setIsTrue] = useState(false);
+  const [cart, setCart] = useContext(DataContext);
   const handleAddToCart = (singleCourse) => {
     const exists = cart.find((cd) => cd.id === singleCourse.id);
     let newCart = [];
@@ -31,7 +34,8 @@ function CourseHome({ cart, setCart }) {
       <Header color={"white"} />
       <CourseHero />
       <CourseDetails handleAddToCart={handleAddToCart} isTrue={isTrue} />
-      <CourseOverView />
+      <CourseReview />
+      <Footer />
     </Box>
   );
 }
