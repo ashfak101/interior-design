@@ -6,6 +6,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 import { DataContext } from "../../context/DataProvider";
 import React, { useContext } from "react";
@@ -15,9 +16,12 @@ function ShoppingCart({ finalTotal, setFinalTotal }) {
   const [cart] = useContext(DataContext);
   return (
     <>
-      <Paper sx={{ width: "100%" }}>
+      <Paper sx={{ width: "100%", boxShadow: "none" }}>
         <TableContainer sx={{ maxHeight: 440 }}>
-          ShoppingCart
+          <Typography variant="h4" sx={{ p: 1, fontWeight: "bold" }}>
+            {" "}
+            Shopping Cart
+          </Typography>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>

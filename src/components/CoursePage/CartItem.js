@@ -11,6 +11,11 @@ function CartItem({ cd, setFinalTotal }) {
   const increaseQuantity = () => {
     setQuantity((cd.quantity += 1));
   };
+  const decreaseQuantity = () => {
+    if (cd.quantity > 1) {
+      setQuantity((cd.quantity -= 1));
+    }
+  };
   let totalQuantity = 0;
   let allTotal = 0;
   for (const i of cart) {
@@ -33,7 +38,7 @@ function CartItem({ cd, setFinalTotal }) {
       <TableCell>{cd.price}</TableCell>{" "}
       <TableCell>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <RemoveIcon />
+          <RemoveIcon onClick={decreaseQuantity} />
 
           <TextField
             id="outlined-basic"
