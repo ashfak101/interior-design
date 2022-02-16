@@ -61,7 +61,7 @@ function CheckoutForm() {
     }
   };
   return (
-    <Box sx={{ background: "#FAFAFA", p: 10 }}>
+    <Box sx={{ background: "#FAFAFA", p: 5 }}>
       <form onSubmit={handleSubmit}>
         <label
           htmlFor="cardNumber"
@@ -72,21 +72,50 @@ function CheckoutForm() {
           }}
         >
           Card Number
-        </label>
-        <CardNumberElement
-          style={{ border: "1px solid #333" }}
-          id="cardNumber"
-          options={ELEMENT_OPTIONS}
-        />
+        </label>{" "}
+        <Box
+          sx={{
+            background: "#FFFFFF",
+            border: "1px solid #CCCCCC ",
+            p: 2,
+            m: 1,
+            borderRadius: "6px",
+          }}
+        >
+          <CardNumberElement
+            style={{ border: "1px solid #333" }}
+            id="cardNumber"
+            options={ELEMENT_OPTIONS}
+          />
+        </Box>
         <label htmlFor="expiry">Expiration</label>
-        <CardExpiryElement
-          style={{ width: "100%" }}
-          id="expiry"
-          options={ELEMENT_OPTIONS}
-        />
+        <Box
+          sx={{
+            background: "#FFFFFF",
+            border: "1px solid #CCCCCC ",
+            p: 2,
+            m: 1,
+            borderRadius: "6px",
+          }}
+        >
+          <CardExpiryElement
+            style={{ width: "100%" }}
+            id="expiry"
+            options={ELEMENT_OPTIONS}
+          />{" "}
+        </Box>
         <label htmlFor="cvc">CVC</label>
-        <CardCvcElement id="cvc" options={ELEMENT_OPTIONS} />
-
+        <Box
+          sx={{
+            background: "#FFFFFF",
+            border: "1px solid #CCCCCC ",
+            p: 2,
+            m: 1,
+            borderRadius: "6px",
+          }}
+        >
+          <CardCvcElement id="cvc" options={ELEMENT_OPTIONS} />
+        </Box>
         {/* {errorMessage && <ErrorResult>{errorMessage}</ErrorResult>}
       {paymentMethod && <Result>Got PaymentMethod: {paymentMethod.id}</Result>} */}
         <button type="submit" disabled={!stripe}>
