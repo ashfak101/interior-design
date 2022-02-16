@@ -1,12 +1,15 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Link } from "react-router-dom";
+import DataProvider from "../../context/DataProvider";
 function Cart({ finalTotal }) {
   const [text, setText] = useState("");
   const [disCount, setDiscount] = useState(false);
-  const [disCountPrice, setDisCountPrice] = useState(0);
   const vat = finalTotal * 0.15;
   let total = finalTotal + vat;
+  const [disCountPrice, setDisCountPrice] = useState(total);
+
   const handleDiscount = () => {
     if (text === "apex") {
       let discoutTotal = total / 2;
@@ -15,6 +18,13 @@ function Cart({ finalTotal }) {
       alert("Discount applied");
     }
   };
+  const handleDisDelete = () => {
+    setDiscount(false);
+    setDisCountPrice(0);
+  };
+
+  //   setTotalPrice(total);
+  //   console.log(totalPrice);
 
   console.log(text);
   return (
@@ -45,7 +55,12 @@ function Cart({ finalTotal }) {
       >
         Apply
       </Button>
-
+      {disCount && (
+        <Button onClick={handleDisDelete} sx={{ color: "red" }}>
+          {text}
+          <DeleteIcon></DeleteIcon>
+        </Button>
+      )}
       <Box
         sx={{
           display: "flex",
@@ -84,6 +99,12 @@ function Cart({ finalTotal }) {
         <Typography>Total</Typography>
         <Typography>${disCount ? disCountPrice : total}</Typography>
       </Box>
+      <Button variant="contained" sx={{ width: "100%" }}>
+        <Link style={{ textDecoration: "none", color: "white" }} to="/checkout">
+          {" "}
+          Proceed to Checkout
+        </Link>
+      </Button>
     </Box>
   );
 }

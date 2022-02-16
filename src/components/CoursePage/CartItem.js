@@ -3,8 +3,9 @@ import React, { useContext, useState } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { DataContext } from "../../context/DataProvider";
+import DeleteIcon from "@mui/icons-material/Delete";
 function CartItem({ cd, setFinalTotal }) {
-  const [cart] = useContext(DataContext);
+  const [cart, setCart] = useContext(DataContext);
   const [quantity, setQuantity] = useState(cd.quantity);
   let total = cd.quantity * cd.price;
 
@@ -28,10 +29,15 @@ function CartItem({ cd, setFinalTotal }) {
   }
   setFinalTotal(allTotal);
   console.log(quantity);
+  const handleRemoveCart = (id) => {
+    const remaining = cart?.filter((cd) => cd.id !== id);
+    setCart(remaining);
+  };
+  console.log(cart);
   return (
     <TableRow hover role="checkbox" tabIndex={-1}>
       {" "}
-      <TableCell sx={{ display: "flex" }}>
+      <TableCell sx={{ display: "flex", maxWidth: "350px" }}>
         <img style={{ height: "50px", minWidth: "9px" }} src={cd.img} alt="" />
         <Typography> {cd.courseName}</Typography>
       </TableCell>{" "}
@@ -49,7 +55,12 @@ function CartItem({ cd, setFinalTotal }) {
           <AddCircleOutlineIcon onClick={increaseQuantity} />
         </Box>
       </TableCell>{" "}
-      <TableCell>{total}$</TableCell>{" "}
+      <TableCell>
+        <Box sx={{ display: "flex" }}>
+          {" "}
+          ${total} <DeleteIcon onClick={() => handleRemoveCart(cd.id)} />
+        </Box>
+      </TableCell>{" "}
     </TableRow>
   );
 }

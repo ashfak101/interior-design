@@ -1,10 +1,12 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import React, { useState } from "react";
 import ShoppingCart from "./ShoppingCart";
 import Header from "../Shared/Header/Header";
 import Cart from "./Cart";
+
 function CartHome() {
   const [finalTotal, setFinalTotal] = useState(0);
+
   return (
     <div>
       <Header color={"black"} />
@@ -18,7 +20,7 @@ function CartHome() {
               />
             </Grid>
             <Grid item xs={12} md={12} xl={3}>
-              <Cart finalTotal={finalTotal} />
+              <Cart finalTotal={finalTotal} setTotalPrice />
             </Grid>
           </Grid>
         </Container>
