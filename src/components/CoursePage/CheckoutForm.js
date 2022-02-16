@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import {
   CardCvcElement,
   CardElement,
@@ -118,9 +118,9 @@ function CheckoutForm() {
         </Box>
         {/* {errorMessage && <ErrorResult>{errorMessage}</ErrorResult>}
       {paymentMethod && <Result>Got PaymentMethod: {paymentMethod.id}</Result>} */}
-        <button type="submit" disabled={!stripe}>
-          Pay
-        </button>
+        <Button variant="contained" type="submit" disabled={!stripe}>
+          Place Order
+        </Button>
       </form>
     </Box>
   );

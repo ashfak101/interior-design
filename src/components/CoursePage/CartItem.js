@@ -1,5 +1,5 @@
 import { Box, TableCell, TableRow, TextField, Typography } from "@mui/material";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { DataContext } from "../../context/DataProvider";
@@ -31,8 +31,10 @@ function CartItem({ cd, setFinalTotal }) {
   console.log(quantity);
   const handleRemoveCart = (id) => {
     const remaining = cart?.filter((cd) => cd.id !== id);
+
     setCart(remaining);
   };
+
   console.log(cart);
   return (
     <TableRow hover role="checkbox" tabIndex={-1}>
@@ -41,18 +43,38 @@ function CartItem({ cd, setFinalTotal }) {
         <img style={{ height: "50px", minWidth: "9px" }} src={cd.img} alt="" />
         <Typography> {cd.courseName}</Typography>
       </TableCell>{" "}
-      <TableCell>{cd.price}</TableCell>{" "}
+      <TableCell>$ {cd.price}</TableCell>{" "}
       <TableCell>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <RemoveIcon onClick={decreaseQuantity} />
+          <RemoveIcon
+            onClick={decreaseQuantity}
+            sx={{
+              cursor: "pointer",
+              "&:active": {
+                transform: "scale(1.2)",
+                color: "red",
+              },
+            }}
+          />
 
-          <TextField
-            id="outlined-basic"
-            value={quantity}
+          <Typography sx={{ p: 2, border: "1px solid #333" }}>
+            {quantity}
+          </Typography>
+          {/* id="outlined-basic"
+            value=
             variant="outlined"
             sx={{ width: "50px", height: "50px", border: "none" }}
+          /> */}
+          <AddCircleOutlineIcon
+            onClick={increaseQuantity}
+            sx={{
+              cursor: "pointer",
+              "&:active": {
+                transform: "scale(1.2)",
+                color: "red",
+              },
+            }}
           />
-          <AddCircleOutlineIcon onClick={increaseQuantity} />
         </Box>
       </TableCell>{" "}
       <TableCell>
