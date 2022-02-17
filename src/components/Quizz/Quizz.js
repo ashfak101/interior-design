@@ -1,62 +1,95 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useReducer, useState } from "react";
+import _ from "lodash";
 import Box from "@mui/material/Box";
-import { useTheme } from "@mui/material/styles";
-import MobileStepper from "@mui/material/MobileStepper";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+// import { useTheme } from "@mui/material/styles";
+// import MobileStepper from "@mui/material/MobileStepper";
+// import Paper from "@mui/material/Paper";
+// import Typography from "@mui/material/Typography";
+// import Button from "@mui/material/Button";
+// import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+// import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import Answers from "./Answers";
+import { Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+const initialState = null;
 
-const steps = [
-  {
-    label: "Select campaign settings",
-    description: `For each ad campaign that you create, you can control how much
-                you're willing to spend on clicks and conversions, which networks
-                and geographical locations you want your ads to show on, and more.`,
-  },
-  {
-    label: "Create an ad group",
-    description:
-      "An ad group contains one or more ads which target a shared set of keywords.",
-  },
-  {
-    label: "Create an ad",
-    description: `Try out different ad text to see what brings in the most customers,
-                and learn how to enhance your ads using features like ad extensions.
-                If you run into any problems with your ads, find out how to tell if
-                they're running and how to resolve approval issues.`,
-  },
-];
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "questions":
+      action.value.forEach((element) => {
+        element.options.forEach((option) => {
+          option.checked = false;
+        });
+      });
+      return action.value;
+
+    case "answers":
+      const questions = _.cloneDeep(state);
+      questions[action.question_id].options[action.option_id].checked =
+        action.value;
+      return questions;
+
+    default:
+      return state;
+  }
+};
+
 function Quizz() {
-  const theme = useTheme();
+  const [quiz, dispatch] = useReducer(reducer, initialState);
+  // const theme = useTheme();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const [quizs, setQuizs] = useState([]);
-  const [activeStep, setActiveStep] = React.useState(0);
-  const maxQuizs = quizs.length;
+  const [currentQ, setCurrentQ] = useState(0);
+  // const [activeStep, setActiveStep] = React.useState(0);
+  // const maxQuizs = quizs.length;
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  // const handleBack = () => {
+  //   setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  // };
 
   useEffect(() => {
     fetch("/quizz.json")
       .then((res) => res.json())
-      .then((data) => setQuizs(data));
+      .then((data) => {
+        setLoading(true);
+        setQuizs(data);
+      });
+    setLoading(false);
   }, []);
-  const handleCheckAns = (id) => {
-    if (quizs[activeStep].right_answer === id) {
-      alert("Correct");
-      console.log(id);
+  // const handleCheckAns = (id) => {
+  //   if (quizs[activeStep].right_answer === id) {
+  //     alert("Correct");
+  //     console.log(id);
+  //   }
+  // };
+  useEffect(() => {
+    dispatch({ type: "questions", value: quizs });
+  }, [quizs, setQuizs]);
+  console.log(quiz);
+
+  const handleChange = (e, index) => {
+    dispatch({
+      type: "answers",
+      question_id: currentQ,
+      option_id: index,
+      value: e.target.checked,
+    });
+  };
+  const handleNext = () => {
+    if (currentQ + 1 < quizs.length) {
+      setCurrentQ((prev) => prev + 1);
     }
+  };
+  const handlesumit = () => {
+    navigate({
+      pathname: `/result`,
+      state: quiz,
+    });
   };
   return (
     <Box sx={{ width: "690px", m: "0 auto" }}>
-      <Box sx={{ maxWidth: 600, flexGrow: 1 }}>
+      {/* <Box sx={{ maxWidth: 600, flexGrow: 1 }}>
         <Paper
           square
           elevation={0}
@@ -113,7 +146,14 @@ function Quizz() {
             </Button>
           }
         />
+      </Box> */}
+      {loading && <Box>Loading...</Box>}
+      <Typography>{quiz[currentQ].question}</Typography>
+      <Answers options={quiz[currentQ].options} handleChange={handleChange} />
+      <Box>
+        <Button onClick={handleNext}>Next</Button>
       </Box>
+      <Button onClick={handlesumit}>Submit</Button>
     </Box>
   );
 }

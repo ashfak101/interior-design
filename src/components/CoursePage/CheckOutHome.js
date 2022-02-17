@@ -2,6 +2,7 @@ import { Box, Container } from "@mui/material";
 import React from "react";
 import Footer from "../Shared/Footer/Footer";
 import Header from "../Shared/Header/Header";
+import BillingDetails from "./BillingDetails";
 import Payment from "./Payment";
 
 function CheckOutHome() {
@@ -10,6 +11,7 @@ function CheckOutHome() {
       <Header color={"#282828"}></Header>
       <Box sx={{ background: "#EDF5FF", pt: 20 }}>
         <Container maxWidth="xl">
+          <BillingDetails />
           <Payment />
         </Container>
       </Box>

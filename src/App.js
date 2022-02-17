@@ -9,6 +9,8 @@ import { useState } from "react";
 import ScrollToTop from "./components/Utils/ScrollToTop";
 import Quizz from "./components/Quizz/Quizz";
 import CheckOutHome from "./components/CoursePage/CheckOutHome";
+import Result from "./components/CoursePage/Result";
+import BlogsHome from "./components/Blogs/BlogsHome";
 function App() {
   const [cart, setCart] = useState([]);
   console.log(cart);
@@ -23,6 +25,8 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/quiz" element={<Quizz />} />
               <Route path="/checkout" element={<CheckOutHome />} />
+              <Route path="/checkout" element={<Result />} />
+              <Route path="/blogs" element={<BlogsHome />} />
               <Route
                 path="/courseHome/:id"
                 element={<CourseHome cart={cart} setCart={setCart} />}

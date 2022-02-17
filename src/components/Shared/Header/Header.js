@@ -104,9 +104,9 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                     textDecoration: "none",
                     color: color,
                   }}
-                  to="/inner"
+                  to="/blogs"
                 >
-                  Pricing
+                  Blogs
                 </Link>
               </Typography>
 
@@ -160,7 +160,13 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                 </Typography>
               )}
             </Box>
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                flexDirection: "row-reverse",
+                display: { xs: "flex", md: "none" },
+              }}
+            >
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -190,11 +196,11 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                 }}
               >
                 {/* for Large Screen Menu */}
-                <Typography sx={headerStyle.menuItem}>
+                <Typography sx={{ ...headerStyle.menuItem }}>
                   <Link
                     style={{
                       textDecoration: "none",
-                      color: color,
+                      color: "#333",
                     }}
                     to="/"
                   >
@@ -206,11 +212,11 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                   <Link
                     style={{
                       textDecoration: "none",
-                      color: color,
+                      color: "#333",
                     }}
-                    to="/inner"
+                    to="/blogs"
                   >
-                    Quizzes
+                    Blogs
                   </Link>
                 </Typography>
 
@@ -219,7 +225,7 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                   <Link
                     style={{
                       textDecoration: "none",
-                      color: color,
+                      color: "#333",
                     }}
                     to="/cart"
                   >
@@ -232,7 +238,7 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                   <Link
                     style={{
                       textDecoration: "none",
-                      color: color,
+                      color: "#333",
                     }}
                     to="/quiz"
                   >
@@ -245,7 +251,7 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                     onClick={handleOpen2}
                     sx={{
                       ...headerStyle.menuItem,
-                      color: color,
+                      color: "#333",
                       cursor: "pointer",
                     }}
                   >
@@ -254,12 +260,18 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                   </Typography>
                 )}
                 {!user?.email && (
-                  <Typography onClick={handleOpen} sx={headerStyle.singIn}>
+                  <Typography
+                    onClick={handleOpen}
+                    sx={{ ...headerStyle.singIn, color: "#333" }}
+                  >
                     Sign In
                   </Typography>
                 )}
                 {user?.email && (
-                  <Typography onClick={logOut} sx={headerStyle.singIn}>
+                  <Typography
+                    onClick={logOut}
+                    sx={{ ...headerStyle.singIn, color: "#333" }}
+                  >
                     Log Out
                   </Typography>
                 )}
