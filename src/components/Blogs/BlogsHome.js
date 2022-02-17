@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Shared/Header/Header";
 import BlogsBanner from "./BlogsBanner";
+import BlogSearch from "./BlogSearch";
 import BlogsTopBanner from "./BlogsTopBanner";
 
 function BlogsHome() {
@@ -19,6 +20,7 @@ function BlogsHome() {
       <Header color={"#fff"} />
       <BlogsBanner />
       <BlogsTopBanner blogs={blogs} />
+      <BlogSearch blogs={blogs} />
     </>
   );
 }
