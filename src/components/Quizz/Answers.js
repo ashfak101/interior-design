@@ -10,22 +10,19 @@ import React from "react";
 function Answers({ options, handleChange }) {
   return (
     <div>
-      <FormControl><RadioGroup
-                                    aria-labelledby="demo-radio-buttons-group-label"
-                                    name="radio-buttons-group"
-                                >
+      <FormControl>
         {options.map((option, index) => (
           <FormControlLabel
             key={index}
             value={option.id}
             name={option.option}
-            
+            checked={option.checked}
             onChange={(e) => handleChange(e, index)}
-            control={<Radio  />}
+            control={<Checkbox />}
         
             label={option.option}
           />
-        ))}{" "}</RadioGroup>
+        ))}{" "}
       </FormControl>
     </div>
   );
