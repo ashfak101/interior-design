@@ -10,6 +10,7 @@ function Results() {
   res.forEach((element) => {
     element.options.forEach((option) => {
       if (element.right_answer === option.id && option.checked === true) {
+        option.level=element.level;
         option.right = true;
         arr.push(option);
       }
