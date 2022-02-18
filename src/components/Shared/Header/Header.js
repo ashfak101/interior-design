@@ -10,7 +10,7 @@ import Container from "@mui/material/Container";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import img from "../../../images/Logo/Frame.png";
 import { Link } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
+import useData from "../../Hooks/useData";
 
 export default function Header({ handleOpen, handleOpen2, color }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -22,7 +22,7 @@ export default function Header({ handleOpen, handleOpen2, color }) {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  const { user, logOut } = useAuth();
+  const { user, logOut } = useData();
   const headerStyle = {
     menuItem: {
       fontSize: "18px",

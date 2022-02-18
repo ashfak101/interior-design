@@ -4,7 +4,7 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import Form from "../Form/Form";
-import useAuth from "../../Hooks/useAuth";
+import useData from "../../Hooks/useData";
 import { useNavigate } from "react-router-dom";
 export default function Register({ open2, handleClose2, handleOpen, isClick }) {
   const nevigate = useNavigate();
@@ -59,7 +59,7 @@ export default function Register({ open2, handleClose2, handleOpen, isClick }) {
     loginWithGoogle,
     loginWithFaceBook,
     isLoading,
-  } = useAuth();
+  } = useData();
   const handleGoolgeLogin = () => {
     loginWithGoogle()
       .then((results) => {

@@ -13,13 +13,13 @@ function CartHome() {
       <Box sx={{ background: "#EDF5FF", pt: 20, height: "80vh" }}>
         <Container maxWidth="xl">
           <Grid container spacing={2}>
-            <Grid item xs={12} md={12} xl={9}>
+            <Grid item xs={12} md={8}>
               <ShoppingCart
                 finalTotal={finalTotal}
                 setFinalTotal={setFinalTotal}
               />
             </Grid>
-            <Grid item xs={12} md={12} xl={3}>
+            <Grid item xs={12} md={4}>
               <Cart finalTotal={finalTotal} setTotalPrice />
             </Grid>
           </Grid>

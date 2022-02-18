@@ -11,7 +11,12 @@ import Box from "@mui/material/Box";
 import Answers from "./Answers";
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-const initialState = null;
+import useData from "../Hooks/useData";
+const initialState = {
+  loading: false,
+  quiz:[],
+  
+};
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -36,9 +41,10 @@ const reducer = (state, action) => {
 
 function Quizz() {
   const [quiz, dispatch] = useReducer(reducer, initialState);
+  const {res,setRes}=useData()
   // const theme = useTheme();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [quizs, setQuizs] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
   // const [activeStep, setActiveStep] = React.useState(0);
@@ -49,11 +55,12 @@ function Quizz() {
   // };
 
   useEffect(() => {
+    setLoading(true);
     fetch("/quizz.json")
       .then((res) => res.json())
       .then((data) => {
-        setLoading(true);
         setQuizs(data);
+        setLoading(false);
       });
     setLoading(false);
   }, []);
@@ -66,7 +73,7 @@ function Quizz() {
   useEffect(() => {
     dispatch({ type: "questions", value: quizs });
   }, [quizs, setQuizs]);
-  console.log(quiz);
+ 
 
   const handleChange = (e, index) => {
     dispatch({
@@ -83,10 +90,13 @@ function Quizz() {
   };
   const handlesumit = () => {
     navigate({
-      pathname: `/result`,
-      state: quiz,
+      pathname: `/results`,
+      state: {quiz
+        ,},
     });
   };
+  setRes(quiz)
+  console.log(quiz);
   return (
     <Box sx={{ width: "690px", m: "0 auto" }}>
       {/* <Box sx={{ maxWidth: 600, flexGrow: 1 }}>
@@ -148,8 +158,15 @@ function Quizz() {
         />
       </Box> */}
       {loading && <Box>Loading...</Box>}
-      <Typography>{quiz[currentQ].question}</Typography>
-      <Answers options={quiz[currentQ].options} handleChange={handleChange} />
+      {Array.isArray(quiz) && quiz.length && (
+        <>
+          <Typography>{quiz[currentQ].question}</Typography>
+          <Answers
+            options={quiz[currentQ].options}
+            handleChange={handleChange}
+          />
+        </>
+      )}
       <Box>
         <Button onClick={handleNext}>Next</Button>
       </Box>

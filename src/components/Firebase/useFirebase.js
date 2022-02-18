@@ -14,6 +14,7 @@ initializeAuthentication();
 
 const useFirebase = () => {
   const [user, setUser] = useState();
+  const [res, setRes] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
@@ -71,7 +72,7 @@ const useFirebase = () => {
     registerWithEmailPass,
     loginWithEmail,
     logOut,
-    isLoading,
+    isLoading,res, setRes
   };
 };
 export default useFirebase;

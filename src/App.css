@@ -39,3 +39,9 @@
 * {
   box-sizing: border-box;
 }
+.slick-prev {
+  display: none !important;
+}
+.slick-next {
+  display: none !important;
+}

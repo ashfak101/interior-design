@@ -4,7 +4,7 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import Form from "../Form/Form";
-import useAuth from "../../Hooks/useAuth";
+import useData from "../../Hooks/useData";
 import { useNavigate } from "react-router-dom";
 import LinearProgress from "@mui/material/LinearProgress";
 export default function Login({ open, handleClose, handleOpen2 }) {
@@ -60,7 +60,7 @@ export default function Login({ open, handleClose, handleOpen2 }) {
     loginWithFaceBook,
     loginWithEmail,
     isLoading,
-  } = useAuth();
+  } = useData();
   const navigate = useNavigate();
   const handleGoolgeLogin = () => {
     loginWithGoogle()
@@ -68,6 +68,7 @@ export default function Login({ open, handleClose, handleOpen2 }) {
         const user = results.user;
         setUser(user);
         navigate.push(`/home`);
+        handleClose();
       })
       .catch((error) => {
         console.log(error);
@@ -79,11 +80,11 @@ export default function Login({ open, handleClose, handleOpen2 }) {
         const user = results.user;
         setUser(user);
         navigate.push(`/home`);
+        handleClose();
       })
       .catch((error) => {
         console.log(error);
       });
-    handleClose();
   };
   // console.log(user);
   if (isLoading) {

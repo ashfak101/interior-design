@@ -7,12 +7,10 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const styles = {
   btn1: {
-    height: "63.09px",
-    padding: "0px 30px",
-    background: "#282828",
+    
     color: "#FFFFFF",
     textAlign: "center",
-    fontSize: "16px",
+    fontSize: "26px",
     cursor: "pointer",
   },
   card: {
@@ -126,29 +124,47 @@ function Reviews() {
             Students Saying
           </Typography>
         </Box>
-        <Box>
-          <ArrowBackIosIcon
-            onClick={() => silder?.current?.slickPrev()}
+        <Box sx={{ display: "flex"}}>
+          <Box
             sx={{
-              ...styles.btn1,
-              "&:hover": {
-                color: "#282828",
-                background: "rgba(40, 40, 40, 0.1)",
-              },
+              background: "#333",
+              width: "63.09px",
+              height: "63.09px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
             }}
-          />
+          >
+            <ArrowBackIosIcon
+              onClick={() => silder?.current?.slickPrev()}
+              sx={{
+                ...styles.btn1,
+                "&:hover": {
+                  color: "#282828",
+                  
+                },
+              }}
+            />
+          </Box><Box sx={{
+              background: "rgba(40, 40, 40, 0.1)",
+              width: "63.09px",
+              height: "63.09px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}>
           <ArrowForwardIosIcon
             onClick={() => silder?.current?.slickNext()}
             sx={{
               ...styles.btn1,
-              background: "rgba(40, 40, 40, 0.1)",
+            
               color: "black",
               "&:active": {
                 color: "#fff",
-                background: "#282828",
+               
               },
             }}
-          />
+          /></Box>
         </Box>
       </Box>
 

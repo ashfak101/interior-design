@@ -113,8 +113,8 @@ function VideoSection() {
                     "&:before": {
                       content: '""',
                       position: "absolute",
-                      top: "-9px",
-                      left: "-8px",
+                      top: "-13px",
+                      left: "-12px",
                       width: "68px",
                       height: "68px",
                       borderRadius: "50%",
@@ -131,7 +131,8 @@ function VideoSection() {
                       color: "#FFFFFF",
                       background: "rgba(255, 255, 255, 0.3)",
                       borderRadius: "50%",
-                      padding: "10px",
+                      width:"40px",
+                      height:"40px",
                       position: "relative",
                       "&:hover": {
                         color: "black",

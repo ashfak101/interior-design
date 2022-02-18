@@ -15,7 +15,7 @@ function Cart({ finalTotal }) {
       let discoutTotal = total / 2;
       setDisCountPrice(discoutTotal);
       setDiscount(true);
-      alert("Discount applied");
+     
     }
   };
   const handleDisDelete = () => {

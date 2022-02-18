@@ -6,11 +6,12 @@ import Home from "./components/Home/Home/Home";
 import AuthProvider from "./context/AuthProvider";
 import DataProvider from "./context/DataProvider";
 import { useState } from "react";
-import ScrollToTop from "./components/Utils/ScrollToTop";
+
 import Quizz from "./components/Quizz/Quizz";
 import CheckOutHome from "./components/CoursePage/CheckOutHome";
-import Result from "./components/CoursePage/Result";
+
 import BlogsHome from "./components/Blogs/BlogsHome";
+import Results from "./components/Quizz/Results";
 function App() {
   const [cart, setCart] = useState([]);
   console.log(cart);
@@ -19,13 +20,13 @@ function App() {
       <DataProvider>
         <div>
           <BrowserRouter>
-            <ScrollToTop />
+            {/* <ScrollToTop /> */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
               <Route path="/quiz" element={<Quizz />} />
               <Route path="/checkout" element={<CheckOutHome />} />
-              <Route path="/checkout" element={<Result />} />
+              <Route path="/results" element={<Results />} />
               <Route path="/blogs" element={<BlogsHome />} />
               <Route
                 path="/courseHome/:id"
