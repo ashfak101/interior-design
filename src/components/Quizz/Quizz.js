@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 // import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import Answers from "./Answers";
 import { Button, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useData from "../Hooks/useData";
 const initialState = {
   loading: false,
@@ -96,9 +96,24 @@ function Quizz() {
     });
   };
   setRes(quiz)
-  console.log(quiz);
+  console.log(currentQ);
   return (
-    <Box sx={{ width: "690px", m: "0 auto" }}>
+    <> <Typography sx={{
+      fontSize: "30px",
+      fontWeight: "bold",
+      color: "primary",
+      mb: "20px",
+      pl: "20px",
+      backgroundColor: "green",
+   }}><Link style={{textDecoration: "none",color: "white"}} to="/home">Home</Link></Typography>
+    <Box sx={{ width: {
+
+      xs: "100%",
+      md: "690px",
+    }, m: "0 auto" }}>
+      <Box>
+      
+      </Box>
       {/* <Box sx={{ maxWidth: 600, flexGrow: 1 }}>
         <Paper
           square
@@ -160,18 +175,22 @@ function Quizz() {
       {loading && <Box>Loading...</Box>}
       {Array.isArray(quiz) && quiz.length && (
         <>
+        
           <Typography>{quiz[currentQ].question}</Typography>
+          <Typography>{currentQ+1}</Typography>
           <Answers
+          
             options={quiz[currentQ].options}
             handleChange={handleChange}
           />
         </>
       )}
-      <Box>
+      {currentQ+1 !==quiz.length ?<Box>
         <Button onClick={handleNext}>Next</Button>
-      </Box>
-      <Button onClick={handlesumit}>Submit</Button>
-    </Box>
+      </Box>:<Button onClick={handlesumit}>Submit</Button>
+      }
+      
+    </Box></>
   );
 }
 
