@@ -14,8 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useData from "../Hooks/useData";
 const initialState = {
   loading: false,
-  quiz:[],
-  
+  quiz: [],
 };
 
 const reducer = (state, action) => {
@@ -41,7 +40,7 @@ const reducer = (state, action) => {
 
 function Quizz() {
   const [quiz, dispatch] = useReducer(reducer, initialState);
-  const {res,setRes}=useData()
+  const { res, setRes } = useData();
   // const theme = useTheme();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -73,7 +72,6 @@ function Quizz() {
   useEffect(() => {
     dispatch({ type: "questions", value: quizs });
   }, [quizs, setQuizs]);
- 
 
   const handleChange = (e, index) => {
     dispatch({
@@ -91,30 +89,41 @@ function Quizz() {
   const handlesumit = () => {
     navigate({
       pathname: `/results`,
-      state: {quiz
-        ,},
+      state: { quiz },
     });
   };
-  setRes(quiz)
+  setRes(quiz);
   console.log(currentQ);
   return (
-    <> <Typography sx={{
-      fontSize: "30px",
-      fontWeight: "bold",
-      color: "primary",
-      mb: "20px",
-      pl: "20px",
-      backgroundColor: "green",
-   }}><Link style={{textDecoration: "none",color: "white"}} to="/home">Home</Link></Typography>
-    <Box sx={{ width: {
-
-      xs: "100%",
-      md: "690px",
-    }, m: "0 auto" }}>
-      <Box>
-      
-      </Box>
-      {/* <Box sx={{ maxWidth: 600, flexGrow: 1 }}>
+    <>
+      {" "}
+      <Typography
+        sx={{
+          fontSize: "30px",
+          fontWeight: "bold",
+          color: "primary",
+          mb: "20px",
+          pl: "20px",
+          backgroundColor: "green",
+        }}
+      >
+        <Link style={{ textDecoration: "none", color: "white" }} to="/home">
+          Home
+        </Link>
+      </Typography>
+      <Box
+        sx={{
+          width: {
+            xs: "100%",
+            md: "690px",
+          },
+          m: "0 auto",
+          p: "20px",
+          boxShadow: "0px 0px 10px #000",
+        }}
+      >
+        <Box></Box>
+        {/* <Box sx={{ maxWidth: 600, flexGrow: 1 }}>
         <Paper
           square
           elevation={0}
@@ -172,25 +181,64 @@ function Quizz() {
           }
         />
       </Box> */}
-      {loading && <Box>Loading...</Box>}
-      {Array.isArray(quiz) && quiz.length && (
-        <>
-        
-          <Typography>{quiz[currentQ].question}</Typography>
-          <Typography>{currentQ+1}</Typography>
-          <Answers
-          
-            options={quiz[currentQ].options}
-            handleChange={handleChange}
-          />
-        </>
-      )}
-      {currentQ+1 !==quiz.length ?<Box>
-        <Button onClick={handleNext}>Next</Button>
-      </Box>:<Button onClick={handlesumit}>Submit</Button>
-      }
-      
-    </Box></>
+        {loading && <Box>Loading...</Box>}
+        {Array.isArray(quiz) && quiz.length && (
+          <>
+            <Box sx={{ mb: 5 }}>
+              <Typography
+                sx={{
+                  mr: 2,
+
+                  color: "green",
+                }}
+              >
+                {" "}
+                Question No:-
+                {currentQ + 1}
+              </Typography>
+              <Typography sx={{ fontSize: "20px" }}>
+                {quiz[currentQ].question}
+              </Typography>
+            </Box>
+            <Answers
+              options={quiz[currentQ].options}
+              handleChange={handleChange}
+            />
+          </>
+        )}
+        {currentQ + 1 !== quiz.length ? (
+          <Box sx={{ textAlign: "right", mt: 5, p: 2 }}>
+            <Button
+              sx={{
+                background: "green",
+                fontSize: "20px",
+                p: "10px 20px",
+                color: "white",
+                "&:hover": { color: "#333" },
+              }}
+              onClick={handleNext}
+            >
+              Next
+            </Button>
+          </Box>
+        ) : (
+          <Box sx={{ textAlign: "right", mt: 5, p: 2 }}>
+            <Button
+              sx={{
+                background: "green",
+                fontSize: "20px",
+                p: "10px 20px",
+                color: "white",
+                "&:hover": { color: "#333" },
+              }}
+              onClick={handlesumit}
+            >
+              Submit
+            </Button>
+          </Box>
+        )}
+      </Box>
+    </>
   );
 }
 

@@ -1,5 +1,6 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import useData from "../Hooks/useData";
 
 function Results() {
@@ -10,7 +11,7 @@ function Results() {
   res.forEach((element) => {
     element.options.forEach((option) => {
       if (element.right_answer === option.id && option.checked === true) {
-        option.level=element.level;
+        option.level = element.level;
         option.right = true;
         arr.push(option);
       }
@@ -23,29 +24,56 @@ function Results() {
   return (
     <div>
       <Box>
-        <Typography variant="h4">
+        <Typography
+          variant="h4"
+          sx={{ p: "10px 30px", background: "#bf00ff", color: "#fff" }}
+        >
           Your Score is {arr.length}/{res.length}
         </Typography>
-
-        <Box>
-          {arr2.map((element) => (
-            <>
-              <Typography>{element.question}</Typography>
-
-              {element.options.map((option) => (
-                <Box>
-                  <Typography
-                    sx={{
-                      color: option.right && option.checked && "green" || option.checked && 'red'
-                    }}
-                  >
-                    {option.option}
+        <Container maxWidth="xl">
+          <Box sx={{ boxShadow: "0px 0px 10px #000", p: 4, mb: 4 }}>
+            {arr2.map((element, index) => (
+              <>
+                {" "}
+                <Box sx={{ borderBottom: "1px solid #999", pb: 1 }}>
+                  <Typography sx={{ fontSize: "24px", fontWeight: "bold" }}>
+                    Quiz {index + 1}
                   </Typography>
+                  <Typography
+                    sx={{ fontSize: "20px", fontWeight: "400", m: "12px 0" }}
+                  >
+                    {element.question}
+                  </Typography>
+
+                  {element.options.map((option) => (
+                    <Box>
+                      <Typography
+                        sx={{
+                          color:
+                            (option.right && option.checked && "green") ||
+                            (option.checked && "red"),
+                        }}
+                      >
+                        {option.option}
+                      </Typography>
+                    </Box>
+                  ))}
                 </Box>
-              ))}
-            </>
-          ))}
-        </Box>
+              </>
+            ))}
+          </Box>
+          <Box sx={{ textAlign: "center" }}>
+            <Button variant="contained" sx={{ color: "white" }}>
+              <Link
+                to="/home"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                {" "}
+                Back To Home
+              </Link>{" "}
+            </Button>
+          </Box>
+        </Container>
       </Box>
     </div>
   );
