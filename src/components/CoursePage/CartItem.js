@@ -1,11 +1,11 @@
-import { Box, TableCell, TableRow, TextField, Typography } from "@mui/material";
+import { Box, TableCell, TableRow, Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { DataContext } from "../../context/DataProvider";
 import DeleteIcon from "@mui/icons-material/Delete";
 function CartItem({ cd, setFinalTotal }) {
-  const [cart, setCart] = useContext(DataContext);
+  const [state, dispatch] = useContext(DataContext);
   const [quantity, setQuantity] = useState(cd.quantity);
   let total = cd.quantity * cd.price;
 
@@ -19,7 +19,7 @@ function CartItem({ cd, setFinalTotal }) {
   };
   let totalQuantity = 0;
   let allTotal = 0;
-  for (const i of cart) {
+  for (const i of state.cart) {
     if (!i.quantity) {
       i.quantity = 1;
     } else {
@@ -30,12 +30,21 @@ function CartItem({ cd, setFinalTotal }) {
   setFinalTotal(allTotal);
   console.log(quantity);
   const handleRemoveCart = (id) => {
-    const remaining = cart?.filter((cd) => cd.id !== id);
+    const remaining = state.cart?.filter((cd) => cd.id !== id);
 
-    setCart(remaining);
+    dispatch({
+      type: "cart",
+      value: remaining,
+    });
   };
+  useEffect(() => {
+    dispatch({
+      type: "finalTotal",
+      value: allTotal,
+    });
+  }, [allTotal, dispatch]);
 
-  console.log(cart);
+  console.log(state.cart);
   return (
     <TableRow hover role="checkbox" tabIndex={-1}>
       {" "}

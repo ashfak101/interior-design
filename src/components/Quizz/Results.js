@@ -1,13 +1,18 @@
 import { Box, Button, Container, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useData from "../Hooks/useData";
+import QuizzCourse from "./QuizzCourse";
 
 function Results() {
   const { res } = useData();
-
+  const [quizLevel, setQuizLevel] = useState("");
   let arr = [];
   let arr2 = [];
+  let begineerCount = 0;
+  let intermediateCount = 0;
+  let advancedCount = 0;
+
   res.forEach((element) => {
     element.options.forEach((option) => {
       if (element.right_answer === option.id && option.checked === true) {
@@ -18,9 +23,36 @@ function Results() {
     });
     arr2.push(element);
   });
-  console.log(arr);
-  console.log(arr2);
-  console.log(res.length);
+
+  useEffect(() => {
+    arr.forEach((element) => {
+      if (element.level === "beginner") {
+        begineerCount++;
+      } else if (element.level === "intermediate") {
+        intermediateCount++;
+      } else if (element.level === "advanced") {
+        advancedCount++;
+      }
+    });
+    if (begineerCount > intermediateCount || begineerCount > advancedCount) {
+      setQuizLevel("beginner");
+    } else if (
+      intermediateCount > begineerCount ||
+      intermediateCount > advancedCount
+    ) {
+      setQuizLevel("intermediate");
+    } else if (
+      advancedCount > begineerCount ||
+      advancedCount > intermediateCount
+    ) {
+      setQuizLevel("advanced");
+    } else {
+      setQuizLevel(" ");
+    }
+  }, [arr]);
+
+  console.log(quizLevel);
+
   return (
     <div>
       <Box>
@@ -74,6 +106,7 @@ function Results() {
             </Button>
           </Box>
         </Container>
+        <QuizzCourse quizLevel={quizLevel} />
       </Box>
     </div>
   );

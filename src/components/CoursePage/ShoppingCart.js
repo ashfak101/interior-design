@@ -13,7 +13,7 @@ import React, { useContext } from "react";
 import CartItem from "./CartItem";
 
 function ShoppingCart({ finalTotal, setFinalTotal }) {
-  const [cart] = useContext(DataContext);
+  const [state] = useContext(DataContext);
   return (
     <>
       <Paper sx={{ width: "100%", boxShadow: "none" }}>
@@ -32,7 +32,7 @@ function ShoppingCart({ finalTotal, setFinalTotal }) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {cart?.map((cd) => (
+              {state.cart?.map((cd) => (
                 <CartItem
                   key={cd.id}
                   finalTotal={finalTotal}

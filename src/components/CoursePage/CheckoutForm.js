@@ -1,4 +1,5 @@
 import { Box, Button } from "@mui/material";
+import Alert from "@mui/material/Alert";
 import {
   CardCvcElement,
   CardElement,
@@ -30,6 +31,7 @@ function CheckoutForm() {
 
   const [errorMessage, setErrorMessage] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState(null);
+  const [cardName, setCardName] = useState(null);
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -56,12 +58,18 @@ function CheckoutForm() {
       setPaymentMethod(null);
     } else {
       console.log("[PaymentMethod]", payload.paymentMethod);
+      setCardName(payload.paymentMethod.card.brand);
       setPaymentMethod(payload.paymentMethod);
       setErrorMessage(null);
     }
   };
+  setTimeout(() => {
+    setCardName(null);
+    setErrorMessage(null);
+  }, 3000);
   return (
     <Box sx={{ background: "#FAFAFA", p: 5 }}>
+      {cardName && <Alert severity="info"> Card Type : {cardName} </Alert>}
       <form onSubmit={handleSubmit}>
         <label
           htmlFor="cardNumber"
@@ -122,6 +130,12 @@ function CheckoutForm() {
           Place Order
         </Button>
       </form>
+      <Box sx={{ p: 5 }}>
+        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+        {cardName && (
+          <Alert severity="success">Your order Successfully placed .</Alert>
+        )}
+      </Box>
     </Box>
   );
 }

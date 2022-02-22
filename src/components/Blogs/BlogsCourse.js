@@ -7,9 +7,11 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState, useEffect, useRef } from "react";
-import Slider from "react-slick";import PersonIcon from "@mui/icons-material/Person";
+import Slider from "react-slick";
+import PersonIcon from "@mui/icons-material/Person";
 import StarRateIcon from "@mui/icons-material/StarRate";
-
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 function BlogsCourse() {
   const [courses, setCourses] = useState([]);
   useEffect(() => {
@@ -61,6 +63,85 @@ function BlogsCourse() {
     >
       <Box>
         <Container maxWidth="xl">
+          <Container maxWidth="xl">
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-end",
+                padding: "50px 0",
+              }}
+            >
+              <Box>
+                <Typography
+                  sx={{ color: "#F4C622", fontSize: "23px", fontWeight: "900" }}
+                >
+                  SIMILAR COURSES
+                </Typography>
+                <Typography
+                  sx={{ color: "#FFFFFF", fontSize: "56px", fontWeight: "900" }}
+                >
+                  Courses That You Might Like
+                </Typography>
+                <Typography
+                  sx={{ color: "#FFFFFF", fontSize: "18px", fontWeight: "400" }}
+                >
+                  Whithin Salons,hair stylists may rent their own station{" "}
+                </Typography>
+                <Typography
+                  sx={{ color: "#FFFFFF", fontSize: "18px", fontWeight: "400" }}
+                >
+                  manage their clients independently
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex" }}>
+                <Box
+                  sx={{
+                    width: "63.09px",
+                    color: "#FFFFFF",
+                    height: "63.09px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    border: "1px solid #FFF",
+                    borderRadius: "50%",
+                  }}
+                >
+                  <ArrowBackIosIcon
+                    onClick={() => silder?.current?.slickPrev()}
+                    sx={{
+                      "&:hover": {
+                        color: "#FFFFFF",
+                      },
+                    }}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    background: "rgba(40, 40, 40, 0.1)",
+                    width: "63.09px",
+                    height: "63.09px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    border: "1px solid #FFF",
+                    borderRadius: "50%",
+                    color: "#FFFFFF",
+                  }}
+                >
+                  <ArrowForwardIosIcon
+                    onClick={() => silder?.current?.slickNext()}
+                    sx={{
+                      color: "#FFFFFF",
+                      "&:active": {
+                        color: "#fff",
+                      },
+                    }}
+                  />
+                </Box>
+              </Box>
+            </Box>
+          </Container>
           <Box>
             <Slider ref={silder} {...settings}>
               {courses.map((course) => (
@@ -82,7 +163,7 @@ function BlogsCourse() {
                       <Typography
                         sx={{
                           fontSize: "24px",
-                          fontSize: "700",
+                          fontWeight: "700",
                           color: "#333",
                         }}
                       >
@@ -97,17 +178,17 @@ function BlogsCourse() {
                         padding: "20px",
                       }}
                     >
-                        <Typography
-              display={{
-                display: "flex",
-                fontSize: "16px",
-                color: "#3F3F3F",
-                fontWeight: "500",
-              }}
-            >
-              <PersonIcon />
-              {course.people} User
-            </Typography>
+                      <Typography
+                        display={{
+                          display: "flex",
+                          fontSize: "16px",
+                          color: "#3F3F3F",
+                          fontWeight: "500",
+                        }}
+                      >
+                        <PersonIcon />
+                        {course.people} User
+                      </Typography>
                     </Box>
                   </Card>
                 </Box>

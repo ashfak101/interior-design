@@ -2,30 +2,45 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
-import DataProvider from "../../context/DataProvider";
+import { DataContext } from "../../context/DataProvider";
+
 function Cart({ finalTotal }) {
+  const [state, dispatch] = useContext(DataContext);
   const [text, setText] = useState("");
   const [disCount, setDiscount] = useState(false);
   const vat = finalTotal * 0.15;
   let total = finalTotal + vat;
-  const [disCountPrice, setDisCountPrice] = useState(total);
 
   const handleDiscount = () => {
     if (text === "apex") {
       let discoutTotal = total / 2;
-      setDisCountPrice(discoutTotal);
       setDiscount(true);
-     
+      dispatch({
+        type: "discount",
+        value: discoutTotal,
+      });
     }
   };
   const handleDisDelete = () => {
     setDiscount(false);
-    setDisCountPrice(0);
+    dispatch({
+      type: "discount",
+      value: total,
+    });
   };
-
+  console.log(state.disCountPrice);
   //   setTotalPrice(total);
   //   console.log(totalPrice);
-
+  useEffect(() => {
+    dispatch({
+      type: "discount",
+      value: total,
+    });
+    dispatch({
+      type: "vat",
+      value: vat,
+    });
+  }, [total, dispatch, vat]);
   console.log(text);
   return (
     <Box
@@ -97,7 +112,7 @@ function Cart({ finalTotal }) {
         }}
       >
         <Typography>Total</Typography>
-        <Typography>${disCount ? disCountPrice : total}</Typography>
+        <Typography>${state.disCountPrice}</Typography>
       </Box>
       <Button variant="contained" sx={{ width: "100%" }}>
         <Link style={{ textDecoration: "none", color: "white" }} to="/checkout">

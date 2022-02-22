@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Shared/Header/Header";
+import Footer from "../Shared/Footer/Footer";
 import BlogsBanner from "./BlogsBanner";
 import BlogSearch from "./BlogSearch";
 import BlogsTopBanner from "./BlogsTopBanner";
@@ -43,6 +44,7 @@ function BlogsHome() {
         </Stack>
       </Box>
       <BlogsCourse />
+      <Footer></Footer>
     </>
   );
 }

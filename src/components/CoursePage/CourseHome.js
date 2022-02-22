@@ -10,25 +10,25 @@ import CourseReview from "./CourseReview";
 
 function CourseHome() {
   const [isTrue, setIsTrue] = useState(false);
-  const [cart, setCart] = useContext(DataContext);
+  const [state, dispatch] = useContext(DataContext);
   const handleAddToCart = (singleCourse) => {
-    const exists = cart.find((cd) => cd.id === singleCourse.id);
+    const exists = state.cart.find((cd) => cd.id === singleCourse.id);
     let newCart = [];
     if (exists) {
-      const remaining = cart.filter((cd) => cd.id !== singleCourse.id);
+      const remaining = state.cart.filter((cd) => cd.id !== singleCourse.id);
       exists.quantity = exists.quantity + 1;
       newCart = [...remaining, singleCourse];
     } else {
       singleCourse.quantity = 1;
-      newCart = [...cart, singleCourse];
+      newCart = [...state.cart, singleCourse];
     }
-    setCart(newCart);
+    dispatch({ type: "cart", value: newCart });
     setIsTrue(true);
   };
   setTimeout(() => {
     setIsTrue(false);
   }, 1000);
-  console.log(cart);
+  console.log(state.cart);
   return (
     <Box>
       <Header color={"white"} />

@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
@@ -61,11 +61,19 @@ function BlogsTopBanner({ blogs }) {
         <Box sx={{ marginTop: "-150px", position: "relative" }}>
           <ArrowBackIosIcon
             onClick={() => silder?.current?.slickPrev()}
-            sx={{ ...styles.icon, top: "50%", left: "-20px" }}
+            sx={{
+              ...styles.icon,
+              top: "45%",
+              left: { xs: "0px", md: "-40px" },
+            }}
           ></ArrowBackIosIcon>
           <ArrowForwardIosIcon
             onClick={() => silder?.current?.slickNext()}
-            sx={{ ...styles.icon, right: "-20px", top: "50%" }}
+            sx={{
+              ...styles.icon,
+              right: { xs: "0px", md: "-40px" },
+              top: "45%",
+            }}
           ></ArrowForwardIosIcon>
           <Slider ref={silder} {...settings}>
             {blogs.map((blog, index) => (
@@ -73,6 +81,7 @@ function BlogsTopBanner({ blogs }) {
                 <Box
                   sx={{
                     display: "flex",
+                    p: 3,
                     flexDirection: {
                       xl: "row",
                       lg: "row",
@@ -81,6 +90,7 @@ function BlogsTopBanner({ blogs }) {
                       xs: "column",
                     },
                   }}
+                  key={index}
                 >
                   <Box sx={{ width: "30%" }}>
                     <Box
@@ -96,7 +106,7 @@ function BlogsTopBanner({ blogs }) {
                   </Box>
                   <Box
                     sx={{
-                      width: "50%",
+                      width: "80%",
                       pl: {
                         lg: 10,
                         md: 10,
@@ -121,12 +131,24 @@ function BlogsTopBanner({ blogs }) {
                     <Typography>{blog.description.slice(0, 200)}</Typography>
                     <Box
                       sx={{
-                        mt: 10,
+                        display: "flex",
+                        justifyContent: "space-between",
+
+                        mt: 5,
                       }}
                     >
                       <Typography sx={{ display: "flex" }}>
                         <CalendarTodayIcon /> {blog.date}
                       </Typography>
+                      <Button
+                        sx={{
+                          border: "1px solid #F15A29",
+                          p: "10px 20px",
+                          color: "#F15A29",
+                        }}
+                      >
+                        View More
+                      </Button>
                     </Box>
                   </Box>
                 </Box>
