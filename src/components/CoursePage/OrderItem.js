@@ -16,7 +16,17 @@ function OrderItem() {
 
   console.log(state.finalTotal);
   return (
-    <Box sx={{ background: "#ffffff", p: 10, mb: 10, borderRadius: "10px" }}>
+    <Box
+      sx={{
+        background: "#ffffff",
+        p: {
+          xs: "0",
+          md: "10",
+        },
+        mb: 10,
+        borderRadius: "10px",
+      }}
+    >
       <Box>
         <Typography
           sx={{

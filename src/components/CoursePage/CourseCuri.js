@@ -8,7 +8,7 @@ function CourseCuri({ singleCourse }) {
     <Box sx={{ mt: 5 }}>
       <Container maxWidth="xl">
         <Paper variant="outlined" sx={{ p: 5 }}>
-          {singleCourse?.courseOutline?.map((item) => (
+          {singleCourse?.courseOutline?.map((item, index) => (
             <Box
               sx={{
                 display: "flex",
@@ -18,6 +18,7 @@ function CourseCuri({ singleCourse }) {
                 borderBottom: "0.877651px solid rgba(0, 0, 0, 0.09)",
                 p: 1,
               }}
+              key={index}
             >
               <Typography sx={{ display: "flex" }}>
                 <PlayCircleOutlineIcon sx={{ mr: 1 }} />

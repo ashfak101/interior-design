@@ -124,7 +124,6 @@ export default function Login({ open, handleClose, handleOpen2 }) {
           </Typography>
           <Box sx={{ textAlign: "center", marginTop: "20px" }}>
             <Button
-              onClick={handleGoolgeLogin}
               sx={{
                 ...styleBtn.btn1,
                 background: "#4688F1",
@@ -132,6 +131,7 @@ export default function Login({ open, handleClose, handleOpen2 }) {
                 padding: "8px 27px",
                 marginBottom: "20px",
               }}
+              onClick={handleGoolgeLogin}
             >
               LOG IN WITH GOOGLE
             </Button>

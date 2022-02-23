@@ -19,9 +19,9 @@ function Hero() {
       textAlign: "left",
       my: "40px",
       pl: {
-        lg: "122px",
         xs: "0",
         md: "120px",
+        lg: "122px",
       },
     },
   };
@@ -29,21 +29,21 @@ function Hero() {
     <>
       <Container maxWidth="xl" sx={{ mt: "120px" }}>
         <Grid container spacing="2">
-          <Grid xs={12} md={12} lg={6}>
+          <Grid item xs={12} md={6}>
             <img
               style={{ display: "block", width: "100%" }}
               src={hero}
               alt=""
             />
           </Grid>
-          <Grid xs={12} md={12} lg={6}>
+          <Grid item xs={12} md={6}>
             <Typography
               sx={{
                 ...style.text1,
                 pl: {
-                  lg: "122px",
                   xs: "0",
                   md: "120px",
+                  lg: "122px",
                 },
                 mt: "120px",
               }}
@@ -68,9 +68,9 @@ function Hero() {
                 textAlign: "left",
                 marginTop: "80px",
                 pl: {
-                  lg: "140px",
                   xs: "10px",
                   md: "140px",
+                  lg: "140px",
                 },
               }}
             >

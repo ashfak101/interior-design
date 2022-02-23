@@ -4,6 +4,7 @@ import Title from "../../Utils/Title";
 import bgImg from "../../../images/courses.png";
 import IntButton from "../../Utils/IntButton";
 import SharedGrid from "../SharedGrid/SharedGrid";
+import { Link } from "react-router-dom";
 const bgImage = {
   background: `url(${bgImg})`,
   backgroundSize: "cover",
@@ -44,7 +45,9 @@ function HomeBlogs() {
             <SharedGrid key={blog.id} data={blog}></SharedGrid>
           ))}
         </Grid>
-        <IntButton text={"View All"}></IntButton>
+        <Link style={{ textDecoration: "none" }} to="/blogs">
+          <IntButton text={"View All"}></IntButton>
+        </Link>
       </Container>
     </Box>
   );

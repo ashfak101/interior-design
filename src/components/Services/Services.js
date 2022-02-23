@@ -28,6 +28,7 @@ function Services() {
       >
         {services.map((service) => (
           <Grid
+            item
             xs={12}
             md={4}
             lg={4}
@@ -43,6 +44,7 @@ function Services() {
                 background: "#F4FFFE",
               },
             }}
+            key={service.name}
           >
             <img
               style={{ width: "100%", marginTop: "127px" }}

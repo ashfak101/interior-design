@@ -1,4 +1,4 @@
-import React, { createContext, useState, useReducer } from "react";
+import React, { createContext, useReducer } from "react";
 import { reducer } from "./Reducer";
 
 export const DataContext = createContext();
@@ -9,7 +9,7 @@ const initialState = {
   total: 0,
   vat: 0,
   disCountPrice: 0,
-  results: [],
+  blogs: [],
 };
 export default function DataProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);

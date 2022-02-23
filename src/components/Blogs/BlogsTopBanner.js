@@ -77,7 +77,7 @@ function BlogsTopBanner({ blogs }) {
           ></ArrowForwardIosIcon>
           <Slider ref={silder} {...settings}>
             {blogs.map((blog, index) => (
-              <Box sx={{ background: "#fff" }}>
+              <Box key={index} sx={{ background: "#fff" }}>
                 <Box
                   sx={{
                     display: "flex",

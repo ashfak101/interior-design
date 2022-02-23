@@ -27,6 +27,12 @@ export const reducer = (state, action) => {
         ...state,
         results: action.value,
       };
+
+    case "blogs":
+      return {
+        ...state,
+        blogs: action.value,
+      };
     default:
       return state;
   }

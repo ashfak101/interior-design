@@ -8,7 +8,17 @@ const stripePromise = loadStripe(
 );
 function Payment() {
   return (
-    <Box sx={{ background: "#ffffff", p: 10, borderRadius: "10px", mb: 3 }}>
+    <Box
+      sx={{
+        background: "#ffffff",
+        p: {
+          xs: "0",
+          md: "10",
+        },
+        borderRadius: "10px",
+        mb: 3,
+      }}
+    >
       <Elements stripe={stripePromise}>
         <Box>
           <Typography

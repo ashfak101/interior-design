@@ -36,7 +36,7 @@ function Footer() {
       <Box sx={{ background: " #282828", color: "#FFFFFF", pt: "121px" }}>
         <Container maxWidth="xl">
           <Grid container>
-            <Grid xs={12} md={5} lg={5}>
+            <Grid item xs={12} md={5} lg={5}>
               <img src={logo} alt="" />
               <Typography
                 sx={{
@@ -54,7 +54,7 @@ function Footer() {
                 injected humour, or ra
               </Typography>
             </Grid>
-            <Grid xs={12} md={2} lg={2}>
+            <Grid item xs={12} md={2} lg={2}>
               <Typography sx={{ ...styles.footerTypo }}>Links</Typography>
               <Box>
                 <Typography sx={{ ...styles.links }}>Accreditation</Typography>
@@ -64,7 +64,7 @@ function Footer() {
                 <Typography sx={{ ...styles.links }}>Pricing</Typography>
               </Box>
             </Grid>
-            <Grid xs={12} md={2} lg={2}>
+            <Grid item xs={12} md={2} lg={2}>
               <Typography sx={{ ...styles.footerTypo }}>
                 Important Links
               </Typography>
@@ -78,7 +78,7 @@ function Footer() {
                 <Typography sx={{ ...styles.links }}>Contact Us</Typography>
               </Box>
             </Grid>
-            <Grid xs={12} md={3} lg={3}>
+            <Grid item xs={12} md={3} lg={3}>
               <Box
                 sx={{
                   width: "207px",

@@ -1,9 +1,9 @@
-import { Box, InputLabel, TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import React from "react";
 
 const styles = {
   width: {
-    xs: "100%",
+    xs: "90%",
     md: "45%",
     lg: "45%",
   },
@@ -15,7 +15,10 @@ function BillingDetails() {
       <Box
         sx={{
           background: "#ffffff",
-          p: 10,
+          p: {
+            xs: "10",
+            md: "10",
+          },
           borderRadius: "10px",
           mt: 2,
           mb: 10,

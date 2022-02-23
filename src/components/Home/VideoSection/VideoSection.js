@@ -89,6 +89,7 @@ function VideoSection() {
         <Grid container sx={{ background: "#333" }}>
           {videos.map((video, index) => (
             <Grid
+              item
               xs={12}
               md={4}
               lg={4}
@@ -131,8 +132,8 @@ function VideoSection() {
                       color: "#FFFFFF",
                       background: "rgba(255, 255, 255, 0.3)",
                       borderRadius: "50%",
-                      width:"40px",
-                      height:"40px",
+                      width: "40px",
+                      height: "40px",
                       position: "relative",
                       "&:hover": {
                         color: "black",

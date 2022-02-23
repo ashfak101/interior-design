@@ -78,7 +78,7 @@ function Results() {
                   </Typography>
 
                   {element.options.map((option) => (
-                    <Box>
+                    <Box key={option.id}>
                       <Typography
                         sx={{
                           color:

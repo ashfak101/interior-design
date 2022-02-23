@@ -45,6 +45,7 @@ function CartItem({ cd, setFinalTotal }) {
   }, [allTotal, dispatch]);
 
   console.log(state.cart);
+
   return (
     <TableRow hover role="checkbox" tabIndex={-1}>
       {" "}
