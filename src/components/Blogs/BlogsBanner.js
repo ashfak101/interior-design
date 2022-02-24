@@ -13,7 +13,7 @@ function BlogsBanner() {
   let total = 0;
   for (let i = 0; i < arr.length; i++) {
     arr[i] = arr[i] + total;
-    console.log(arr[i]);
+    // console.log(arr[i]);
   }
 
   return (

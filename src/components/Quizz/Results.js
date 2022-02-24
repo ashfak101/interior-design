@@ -51,7 +51,7 @@ function Results() {
     }
   }, [arr, begineerCount, advancedCount, intermediateCount]);
 
-  console.log(quizLevel);
+  // console.log(quizLevel);
 
   return (
     <div>
@@ -77,8 +77,8 @@ function Results() {
                     {element.question}
                   </Typography>
 
-                  {element.options.map((option) => (
-                    <Box key={option.id}>
+                  {element.options.map((option, index) => (
+                    <Box key={index}>
                       <Typography
                         sx={{
                           color:

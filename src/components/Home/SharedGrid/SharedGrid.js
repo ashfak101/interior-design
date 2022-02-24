@@ -14,7 +14,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 function SharedGrid({ data }) {
-  console.log(data);
+  // console.log(data);
   return (
     <Grid
       item

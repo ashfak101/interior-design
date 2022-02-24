@@ -7,7 +7,6 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const styles = {
   btn1: {
-    
     color: "#FFFFFF",
     textAlign: "center",
     fontSize: "26px",
@@ -67,7 +66,7 @@ function Reviews() {
       .then((data) => setReviews(data));
   }, []);
 
-  console.log(reviews);
+  // console.log(reviews);
   return (
     <Container maxWidth="xl" sx={{ marginBottom: "100px" }}>
       <Box
@@ -124,7 +123,7 @@ function Reviews() {
             Students Saying
           </Typography>
         </Box>
-        <Box sx={{ display: "flex"}}>
+        <Box sx={{ display: "flex" }}>
           <Box
             sx={{
               background: "#333",
@@ -132,7 +131,7 @@ function Reviews() {
               height: "63.09px",
               display: "flex",
               justifyContent: "center",
-              alignItems: "center"
+              alignItems: "center",
             }}
           >
             <ArrowBackIosIcon
@@ -141,30 +140,32 @@ function Reviews() {
                 ...styles.btn1,
                 "&:hover": {
                   color: "#282828",
-                  
                 },
               }}
             />
-          </Box><Box sx={{
+          </Box>
+          <Box
+            sx={{
               background: "rgba(40, 40, 40, 0.1)",
               width: "63.09px",
               height: "63.09px",
               display: "flex",
               justifyContent: "center",
-              alignItems: "center"
-            }}>
-          <ArrowForwardIosIcon
-            onClick={() => silder?.current?.slickNext()}
-            sx={{
-              ...styles.btn1,
-            
-              color: "black",
-              "&:active": {
-                color: "#fff",
-               
-              },
+              alignItems: "center",
             }}
-          /></Box>
+          >
+            <ArrowForwardIosIcon
+              onClick={() => silder?.current?.slickNext()}
+              sx={{
+                ...styles.btn1,
+
+                color: "black",
+                "&:active": {
+                  color: "#fff",
+                },
+              }}
+            />
+          </Box>
         </Box>
       </Box>
 

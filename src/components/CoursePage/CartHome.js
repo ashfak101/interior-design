@@ -5,6 +5,7 @@ import Header from "../Shared/Header/Header";
 import Cart from "./Cart";
 import Login from "../Login/Login/Login";
 import Register from "../Login/Register/Register";
+import Footer from "../Shared/Footer/Footer";
 
 function CartHome() {
   const [finalTotal, setFinalTotal] = useState(0);
@@ -33,7 +34,7 @@ function CartHome() {
         handleOpen2={handleOpen2}
       />
       <Login
-        pen={open}
+        open={open}
         handleClose={handleClose}
         handleOpen2={handleOpen2}
       ></Login>
@@ -58,6 +59,7 @@ function CartHome() {
           </Grid>
         </Container>
       </Box>
+      <Footer />
     </div>
   );
 }

@@ -54,7 +54,6 @@ export default function Login({ open, handleClose, handleOpen2 }) {
     },
   };
   const {
-    user,
     loginWithGoogle,
     setUser,
     loginWithFaceBook,
@@ -106,9 +105,7 @@ export default function Login({ open, handleClose, handleOpen2 }) {
       <Box>
         <Box sx={{ ...style, width: 350 }}>
           <Box sx={{ textAlign: "right" }}>
-            <Button sx onClick={handleClose}>
-              X
-            </Button>
+            <Button onClick={handleClose}>X</Button>
           </Box>
           <Typography
             sx={{

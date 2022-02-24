@@ -1,7 +1,7 @@
 import { Checkbox, FormControl, FormControlLabel } from "@mui/material";
 import React from "react";
 
-function Answers({ options, handleChange }) {
+function Answers({ options, handleChange, isDisable }) {
   return (
     <div>
       <FormControl
@@ -24,6 +24,7 @@ function Answers({ options, handleChange }) {
             checked={option.checked}
             onChange={(e) => handleChange(e, index)}
             control={<Checkbox />}
+            disabled={isDisable}
             label={option.option}
           />
         ))}{" "}

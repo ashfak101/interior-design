@@ -21,7 +21,7 @@ function QuizzCourse({ quizLevel }) {
 
     setLevelCourse(coursesLevel);
   }, [courses, quizLevel]);
-  console.log(levelCourse);
+  // console.log(levelCourse);
 
   return (
     <Box>

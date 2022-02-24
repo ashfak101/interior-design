@@ -36,6 +36,7 @@ const reducer = (state, action) => {
 function Quizz() {
   const [quiz, dispatch1] = useReducer(reducer, initialState);
   const [state, dispatch] = useContext(DataContext);
+  const [isDisable, setDisable] = useState(false);
   // const { res, setRes } = useData();
 
   const navigate = useNavigate();
@@ -65,11 +66,13 @@ function Quizz() {
       option_id: index,
       value: e.target.checked,
     });
+    setDisable(true);
   };
   const handleNext = () => {
     if (currentQ + 1 < quizs.length) {
       setCurrentQ((prev) => prev + 1);
     }
+    setDisable(false);
   };
   const handlesumit = () => {
     navigate({
@@ -82,7 +85,7 @@ function Quizz() {
   useEffect(() => {
     dispatch({ type: "quizResults", value: quiz });
   }, [dispatch, quiz]);
-  console.log(currentQ);
+  // console.log(currentQ);
   return (
     <>
       {" "}
@@ -131,6 +134,7 @@ function Quizz() {
               </Typography>
             </Box>
             <Answers
+              isDisable={isDisable}
               options={quiz[currentQ].options}
               handleChange={handleChange}
             />

@@ -28,7 +28,7 @@ function Cart({ finalTotal }) {
       value: total,
     });
   };
-  console.log(state.disCountPrice);
+  // console.log(state.disCountPrice);
   //   setTotalPrice(total);
   //   console.log(totalPrice);
   useEffect(() => {
@@ -41,7 +41,7 @@ function Cart({ finalTotal }) {
       value: vat,
     });
   }, [total, dispatch, vat]);
-  console.log(text);
+  // console.log(text);
   return (
     <Box
       sx={{

@@ -1,7 +1,7 @@
 import { Alert, Box, Button, Container, Grid, Typography } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { DataContext } from "../../context/DataProvider";
+
 import img from "../../images/singleCourse.png";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 import StarIcon from "@mui/icons-material/Star";
@@ -74,7 +74,7 @@ function CourseDetails({ handleAddToCart, isTrue }) {
                 <AllInboxIcon />
                 Level
               </Typography>
-              <Typography>{singleCourse?.Level}</Typography>
+              <Typography>{singleCourse?.level}</Typography>
             </Box>
             <Box sx={{ ...styles.cardItems }}>
               <Typography sx={{ display: "flex" }}>

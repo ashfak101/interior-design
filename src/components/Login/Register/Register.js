@@ -98,9 +98,7 @@ export default function Register({ open2, handleClose2, handleOpen, isClick }) {
       <Box>
         <Box sx={{ ...style, width: 350 }}>
           <Box sx={{ textAlign: "right" }}>
-            <Button sx onClick={handleClose2}>
-              X
-            </Button>
+            <Button onClick={handleClose2}>X</Button>
           </Box>
           <Typography
             sx={{
