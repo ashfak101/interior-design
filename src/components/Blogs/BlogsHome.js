@@ -9,10 +9,15 @@ import { Box } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import BlogsCourse from "./BlogsCourse";
+import Login from "../Login/Login/Login";
+import Register from "../Login/Register/Register";
 function BlogsHome() {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [blogsPerPage] = useState(6);
+  const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [isClick, setIsClick] = useState(false);
   useEffect(() => {
     fetch("/blogs.json")
       .then((res) => res.json())
@@ -27,9 +32,39 @@ function BlogsHome() {
   const handleChange = (event, currentBlog) => {
     setCurrentPage(currentBlog);
   };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen2 = () => {
+    setOpen2(true);
+    setIsClick(true);
+  };
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
   return (
     <>
-      <Header color={"#fff"} />
+      <Header
+        color={"#fff"}
+        handleOpen={handleOpen}
+        handleOpen2={handleOpen2}
+      />
+      <Login
+        open={open}
+        handleClose={handleClose}
+        handleOpen2={handleOpen2}
+      ></Login>
+      <Register
+        open2={open2}
+        handleClose2={handleClose2}
+        handleOpen={handleOpen}
+        isClick={isClick}
+      ></Register>
       <Box sx={{ background: "#EDF5FF" }}>
         <BlogsBanner />
         <BlogsTopBanner blogs={blogs} />
