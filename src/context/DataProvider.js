@@ -10,6 +10,7 @@ const initialState = {
   vat: 0,
   disCountPrice: 0,
   blogs: [],
+  quizResults: [],
 };
 export default function DataProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);

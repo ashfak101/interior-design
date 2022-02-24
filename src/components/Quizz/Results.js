@@ -1,11 +1,11 @@
 import { Box, Button, Container, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import useData from "../Hooks/useData";
+import { DataContext } from "../../context/DataProvider";
 import QuizzCourse from "./QuizzCourse";
 
 function Results() {
-  const { res } = useData();
+  const [state] = useContext(DataContext);
   const [quizLevel, setQuizLevel] = useState("");
   let arr = [];
   let arr2 = [];
@@ -13,7 +13,7 @@ function Results() {
   let intermediateCount = 0;
   let advancedCount = 0;
 
-  res.forEach((element) => {
+  state.quizResults.forEach((element) => {
     element.options.forEach((option) => {
       if (element.right_answer === option.id && option.checked === true) {
         option.level = element.level;
@@ -49,7 +49,7 @@ function Results() {
     } else {
       setQuizLevel(" ");
     }
-  }, [arr]);
+  }, [arr, begineerCount, advancedCount, intermediateCount]);
 
   console.log(quizLevel);
 
@@ -60,14 +60,14 @@ function Results() {
           variant="h4"
           sx={{ p: "10px 30px", background: "#bf00ff", color: "#fff" }}
         >
-          Your Score is {arr.length}/{res.length}
+          Your Score is {arr.length}/{state.quizResults.length}
         </Typography>
         <Container maxWidth="xl">
           <Box sx={{ boxShadow: "0px 0px 10px #000", p: 4, mb: 4 }}>
             {arr2.map((element, index) => (
               <>
                 {" "}
-                <Box sx={{ borderBottom: "1px solid #999", pb: 1 }}>
+                <Box key={index} sx={{ borderBottom: "1px solid #999", pb: 1 }}>
                   <Typography sx={{ fontSize: "24px", fontWeight: "bold" }}>
                     Quiz {index + 1}
                   </Typography>

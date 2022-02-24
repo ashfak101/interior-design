@@ -30,8 +30,9 @@ function QuizzCourse({ quizLevel }) {
 
         <Box>
           <Grid container spacing={1} sx={{ marginBottom: "50px" }}>
-            {levelCourse.map((course) => (
+            {levelCourse.map((course, index) => (
               <Grid
+                key={index}
                 item
                 sx={{
                   padding: "20px",

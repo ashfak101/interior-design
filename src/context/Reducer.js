@@ -33,6 +33,12 @@ export const reducer = (state, action) => {
         ...state,
         blogs: action.value,
       };
+
+    case "quizResults":
+      return {
+        ...state,
+        quizResults: action.value,
+      };
     default:
       return state;
   }

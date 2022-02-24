@@ -1,11 +1,12 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import bgImg from "../../images/blogsbg.png";
 import Header from "../Shared/Header/Header";
 import sbgImg from "../../images/sblog.png";
 import { DataContext } from "../../context/DataProvider";
-
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 const bgImage = {
   background: `url(${bgImg})`,
   backgroundSize: "cover",
@@ -46,6 +47,60 @@ function SingleBlog() {
             }}
           >
             <img src={sbgImg} alt="" />
+          </Box>
+          <Box>
+            <Typography
+              sx={{
+                fontSize: "45px",
+                fontWeight: "900",
+                fontFamily: "Lato",
+                color: "#fff",
+                mt: "50px",
+              }}
+            >
+              {blog.name}
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                pl: "140px",
+                color: "#fff",
+                mt: "30px",
+              }}
+            >
+              <Typography
+                sx={{
+                  display: "flex",
+                  fonFamily: "Google Sans",
+                  fontSize: "18px",
+                  fontWeight: "400",
+                  marginRight: "71px",
+                }}
+              >
+                <CalendarTodayIcon
+                  sx={{
+                    mr: "10px",
+                  }}
+                ></CalendarTodayIcon>
+                {blog.date}
+              </Typography>
+              <Typography
+                sx={{
+                  display: "flex",
+                  fonFamily: "Google Sans",
+                  fontSize: "18px",
+                  fontWeight: "400",
+                }}
+              >
+                {" "}
+                <VisibilityIcon
+                  sx={{
+                    mr: "10px",
+                  }}
+                ></VisibilityIcon>
+                11045 Views
+              </Typography>
+            </Box>
           </Box>
         </Container>
       </Box>

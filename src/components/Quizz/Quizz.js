@@ -1,11 +1,12 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 import _ from "lodash";
 import Box from "@mui/material/Box";
 
 import Answers from "./Answers";
 import { Button, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import useData from "../Hooks/useData";
+// import useData from "../Hooks/useData";
+import { DataContext } from "../../context/DataProvider";
 const initialState = {
   loading: false,
   quiz: [],
@@ -33,8 +34,9 @@ const reducer = (state, action) => {
 };
 
 function Quizz() {
-  const [quiz, dispatch] = useReducer(reducer, initialState);
-  const { res, setRes } = useData();
+  const [quiz, dispatch1] = useReducer(reducer, initialState);
+  const [state, dispatch] = useContext(DataContext);
+  // const { res, setRes } = useData();
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -53,11 +55,11 @@ function Quizz() {
   }, []);
 
   useEffect(() => {
-    dispatch({ type: "questions", value: quizs });
+    dispatch1({ type: "questions", value: quizs });
   }, [quizs, setQuizs]);
 
   const handleChange = (e, index) => {
-    dispatch({
+    dispatch1({
       type: "answers",
       question_id: currentQ,
       option_id: index,
@@ -75,7 +77,11 @@ function Quizz() {
       state: { quiz },
     });
   };
-  setRes(quiz);
+  // setRes(quiz);
+
+  useEffect(() => {
+    dispatch({ type: "quizResults", value: quiz });
+  }, [dispatch, quiz]);
   console.log(currentQ);
   return (
     <>
