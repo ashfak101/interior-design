@@ -26,6 +26,7 @@ function CartHome() {
   const handleClose2 = () => {
     setOpen2(false);
   };
+
   return (
     <div>
       <Header

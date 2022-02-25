@@ -121,7 +121,6 @@ function Quizz() {
               <Typography
                 sx={{
                   mr: 2,
-
                   color: "green",
                 }}
               >
