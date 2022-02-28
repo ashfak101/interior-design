@@ -9,13 +9,6 @@ const bgImage = {
   height: "80vh",
 };
 function BlogsBanner() {
-  const arr = [20, 10, 60];
-  let total = 0;
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] = arr[i] + total;
-    // console.log(arr[i]);
-  }
-
   return (
     <Box style={bgImage}>
       <Container maxWidth="xl">

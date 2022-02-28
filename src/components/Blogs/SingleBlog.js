@@ -7,6 +7,7 @@ import sbgImg from "../../images/sblog.png";
 import { DataContext } from "../../context/DataProvider";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import SingleBlogsDes from "./SingleBlogsDes";
 const bgImage = {
   background: `url(${bgImg})`,
   backgroundSize: "cover",
@@ -46,23 +47,30 @@ function SingleBlog() {
               backdropFilter: "blur(20px)",
             }}
           >
-            <img src={sbgImg} alt="" />
+            <img style={{ width: "100%" }} src={sbgImg} alt="" />
           </Box>
           <Box>
             <Typography
               sx={{
-                fontSize: "45px",
+                fontSize: {
+                  xs: "20px",
+                  md: "45px",
+                },
                 fontWeight: "900",
                 fontFamily: "Lato",
                 color: "#fff",
                 mt: "50px",
               }}
             >
-              {blog.name}
+              {blog?.name}
             </Typography>
             <Box
               sx={{
                 display: "flex",
+                flexDirection: {
+                  xs: "column",
+                  md: "row",
+                },
                 pl: "140px",
                 color: "#fff",
                 mt: "30px",
@@ -82,7 +90,7 @@ function SingleBlog() {
                     mr: "10px",
                   }}
                 ></CalendarTodayIcon>
-                {blog.date}
+                {blog?.date}
               </Typography>
               <Typography
                 sx={{
@@ -104,6 +112,7 @@ function SingleBlog() {
           </Box>
         </Container>
       </Box>
+      <SingleBlogsDes />
     </>
   );
 }

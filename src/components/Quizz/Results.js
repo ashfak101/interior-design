@@ -52,7 +52,7 @@ function Results() {
   }, [arr, begineerCount, advancedCount, intermediateCount]);
 
   // console.log(quizLevel);
-
+  console.log(state);
   return (
     <div>
       <Box>

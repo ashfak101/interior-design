@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+
 import img from "../../../images/Logo/Frame.png";
 import { Link } from "react-router-dom";
 import useData from "../../Hooks/useData";
@@ -97,7 +97,7 @@ export default function Header({ handleOpen, handleOpen2, color }) {
                   Home
                 </Link>
               </Typography>
-              <Typography sx={headerStyle.menuItem}>
+              <Typography sx={{ ...headerStyle.menuItem }}>
                 {" "}
                 <Link
                   style={{
